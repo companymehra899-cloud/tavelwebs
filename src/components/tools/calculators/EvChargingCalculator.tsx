@@ -101,7 +101,7 @@ export function EvChargingCalculator() {
       {result ? (
         <ResultCard toolName="EV Charging Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/ev-charging-cost-calculator?distance=${distance}&price=${price}`} onReset={() => reset(() => { setDistance("200"); setConsumption("17"); setPrice("0.35"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter distance, energy consumption and electricity price to estimate your charging cost.</p>
       )}
     </div>
   );

@@ -75,7 +75,7 @@ export function LayoverCalculator() {
       {result ? (
         <ResultCard toolName="Layover" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/layover-calculator" onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your arrival and departure times to calculate the layover length.</p>
       )}
     </div>
   );

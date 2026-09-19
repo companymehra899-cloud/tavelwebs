@@ -88,7 +88,7 @@ export function CostPerPersonCalculator() {
       {result ? (
         <ResultCard toolName="Cost Per Person" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/cost-per-person-calculator?total=${totalCost}&travelers=${travelers}`} onReset={() => reset(() => { setTotalCost("1200"); setTravelers("2"); setCustom(false); setShares(["1", "1"]); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter the trip total and number of travellers to see what each person pays.</p>
       )}
     </div>
   );

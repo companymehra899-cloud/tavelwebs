@@ -102,7 +102,7 @@ export function JetLagCalculator() {
           </section>
         </>
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Choose your origin and destination to estimate the time difference and adjustment plan.</p>
       )}
     </div>
   );

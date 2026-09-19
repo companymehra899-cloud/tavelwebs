@@ -91,7 +91,7 @@ export function FuelCostCalculator() {
       {result ? (
         <ResultCard toolName="Fuel Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={sharePath} onReset={() => reset(() => { setDistance("100"); setConsumption("5"); setFuelPrice("1.75"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter distance, fuel consumption and fuel price to calculate the fuel cost.</p>
       )}
     </div>
   );

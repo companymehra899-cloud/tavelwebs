@@ -122,7 +122,7 @@ export function FuelTollCalculator() {
       {result ? (
         <ResultCard toolName="Fuel + Toll" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/fuel-toll-calculator?distance=${distance}&fuelPrice=${fuelPrice}&toll=${toll}`} onReset={() => reset(() => { setDistance("400"); setConsumption("6"); setFuelPrice("1.75"); setToll("30"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your distance, fuel use and tolls to estimate the total cost.</p>
       )}
     </div>
   );

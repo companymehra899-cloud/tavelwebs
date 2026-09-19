@@ -112,7 +112,7 @@ export function MultiCurrencyConverter() {
             </p>
           </div>
         ) : (
-          <p className="mt-5 rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+          <p className="mt-5 rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter an amount and a base currency to convert it into many currencies at once.</p>
         )}
       </CalculatorCard>
     </div>

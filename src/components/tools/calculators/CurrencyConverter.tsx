@@ -108,7 +108,7 @@ export function CurrencyConverter() {
         <ResultCard toolName="Currency Converter" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/currency-converter?amount=${amount}&from=${from}&to=${to}`} onReset={() => reset(() => { setAmount("100"); })} />
       ) : (
         <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">
-          {t("calculator.enterDetails")}
+          Enter an amount and choose two currencies to see the converted total.
         </p>
       )}
       <p className="text-xs text-muted">

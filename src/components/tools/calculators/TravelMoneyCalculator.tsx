@@ -71,7 +71,7 @@ export function TravelMoneyCalculator() {
       {result ? (
         <ResultCard toolName="Travel Money" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/travel-money-calculator" onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your daily budget, trip length and travellers to see how much money to plan for.</p>
       )}
     </div>
   );

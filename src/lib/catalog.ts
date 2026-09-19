@@ -389,7 +389,7 @@ export const TOOLS: ToolMeta[] = [
     explanation: [
       {
         heading: "Reference rate vs offered rate",
-        body: "Enter the amount and the reference rate, then enter the rate your bank or exchange desk offers and any fixed fee. The tool shows how much the difference costs you.",
+        body: "Enter the amount, the rate your bank or exchange desk offers and any fixed fee. The tool compares it with the live ECB reference rate and shows how much the difference costs you.",
       },
     ],
     formula: "Effective cost = amount × (reference rate − offered rate) + fixed fee.",

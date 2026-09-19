@@ -69,7 +69,7 @@ export function TimeZoneConverter() {
       {result ? (
         <ResultCard toolName="Time Zone Converter" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/time-zone-converter?from=${from}&to=${to}`} onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter a date, time and both time zones to see the converted time.</p>
       )}
     </div>
   );

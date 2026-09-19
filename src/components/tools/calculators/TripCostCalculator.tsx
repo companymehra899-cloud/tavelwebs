@@ -91,7 +91,7 @@ export function TripCostCalculator() {
       {result ? (
         <ResultCard toolName="Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/trip-cost-calculator?travelers=${travelers}`} onReset={() => reset(() => { setTransport("400"); setAccommodation("600"); setFood("300"); setActivities("150"); setOther("100"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your transport, accommodation, food and activity costs to see the trip total.</p>
       )}
     </div>
   );

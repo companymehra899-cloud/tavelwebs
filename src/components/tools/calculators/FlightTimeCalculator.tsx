@@ -96,7 +96,7 @@ export function FlightTimeCalculator() {
       {result ? (
         <ResultCard toolName="Flight Time" title={`${t("calculator.result")} (${t("calculator.estimate")})`} rows={rows} summary={summary} sharePath={`/tools/flight-time-calculator?from=${originCode}&to=${destinationCode}`} onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter an origin and destination to estimate the flight distance and duration.</p>
       )}
     </div>
   );

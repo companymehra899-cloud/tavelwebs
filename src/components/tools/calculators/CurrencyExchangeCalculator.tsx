@@ -109,7 +109,7 @@ export function CurrencyExchangeCalculator() {
       {result ? (
         <ResultCard toolName="Currency Exchange" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/currency-exchange-calculator?amount=${amount}&from=${from}&to=${to}`} onReset={() => reset(() => { setAmount("1000"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter an amount, the offered rate and any fee to see the real cost of exchanging money.</p>
       )}
     </div>
   );

@@ -74,7 +74,7 @@ export function DailyBudgetCalculator() {
       {result ? (
         <ResultCard toolName="Daily Travel Budget" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/daily-travel-budget-calculator?days=${days}`} onReset={() => reset(() => { setAccommodation("90"); setFood("40"); setDays("7"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">{t("calculator.enterDetails")}</p>
+        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your daily accommodation, food, transport and activity costs to see daily, weekly and trip totals.</p>
       )}
     </div>
   );
