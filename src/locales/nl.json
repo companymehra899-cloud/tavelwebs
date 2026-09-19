@@ -1,0 +1,99 @@
+{
+  "brand": "Travel Utility",
+  "tagline": "Snelle reiscalculators en planningstools.",
+  "nav": {
+    "tools": "Tools",
+    "travelCalculators": "Reiscalculators",
+    "roadTrips": "Roadtrips",
+    "currency": "Valuta",
+    "travelPlanning": "Reisplanning"
+  },
+  "header": {
+    "searchPlaceholder": "Zoek reistools",
+    "menu": "Menu",
+    "closeMenu": "Menu sluiten",
+    "favorites": "Mijn reistools",
+    "recent": "Recent gebruikt"
+  },
+  "home": {
+    "title": "Reistools en calculators",
+    "subtitle": "Eenvoudige tools om reizen te plannen, kosten te berekenen, valuta om te rekenen en je voor te bereiden.",
+    "searchPlaceholder": "Wat wil je berekenen?",
+    "searchExamples": "Brandstofkosten, Roadtripkosten, Reisbudget, Valuta, Paklijst, Jetlag",
+    "browseAll": "Alle tools bekijken",
+    "popular": "Populaire tools",
+    "categories": "Categorieën",
+    "recentlyUsed": "Recent gebruikt",
+    "favorites": "Mijn reistools",
+    "noFavorites": "Je opgeslagen tools verschijnen hier."
+  },
+  "tools": {
+    "title": "Reistools",
+    "subtitle": "Elke tool werkt direct, zonder account.",
+    "searchPlaceholder": "Zoek tools",
+    "all": "Alle",
+    "openTool": "Tool openen",
+    "noResults": "Geen tools gevonden.",
+    "clearFilters": "Filters wissen"
+  },
+  "calculator": {
+    "calculate": "Berekenen",
+    "reset": "Resetten",
+    "copy": "Resultaat kopiëren",
+    "copied": "Gekopieerd",
+    "share": "Delen",
+    "print": "Printen",
+    "calculateNow": "Berekenen",
+    "enterDetails": "Voer je reisgegevens in om de kosten te berekenen.",
+    "result": "Je resultaat",
+    "total": "Totaal",
+    "perPerson": "Per persoon",
+    "formula": "Formule en methode",
+    "faq": "Veelgestelde vragen",
+    "related": "Gerelateerde tools",
+    "addFavorite": "Aan favorieten toevoegen",
+    "removeFavorite": "Uit favorieten verwijderen",
+    "loading": "Laden...",
+    "unavailable": "Live gegevens zijn tijdelijk niet beschikbaar.",
+    "estimate": "Schatting",
+    "resetTool": "Alleen de waarden van deze tool resetten."
+  },
+  "units": {
+    "metric": "Metrisch",
+    "imperial": "Imperiaal",
+    "unitSystem": "Eenhedenstelsel"
+  },
+  "footer": {
+    "tools": "Tools",
+    "company": "Bedrijf",
+    "legal": "Juridisch",
+    "about": "Over ons",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Voorwaarden",
+    "cookies": "Cookiebeleid",
+    "rights": "Alle rechten voorbehouden.",
+    "disclaimer": "Travel Utility biedt schattingen en algemene informatie, geen professioneel, juridisch of medisch advies."
+  },
+  "cookies": {
+    "title": "Cookievoorkeuren",
+    "message": "We gebruiken essentiële cookies. Optionele analyse- en advertentiecookies staan uit tenzij je ze accepteert.",
+    "accept": "Optionele accepteren",
+    "reject": "Alleen essentieel",
+    "manage": "Voorkeuren beheren",
+    "essential": "Essentieel",
+    "analytics": "Analyse",
+    "advertising": "Advertenties",
+    "save": "Opslaan"
+  },
+  "legal": {
+    "lastUpdated": "Laatst bijgewerkt"
+  },
+  "common": {
+    "english": "Engels",
+    "language": "Taal",
+    "currency": "Valuta",
+    "yes": "Ja",
+    "no": "Nee"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "brand": "Travel Utility",
+  "tagline": "Schnelle Reise-Rechner und Planungstools.",
+  "nav": {
+    "tools": "Tools",
+    "travelCalculators": "Reise-Rechner",
+    "roadTrips": "Roadtrips",
+    "currency": "Währung",
+    "travelPlanning": "Reiseplanung"
+  },
+  "header": {
+    "searchPlaceholder": "Reise-Tools suchen",
+    "menu": "Menü",
+    "closeMenu": "Menü schließen",
+    "favorites": "Meine Reise-Tools",
+    "recent": "Zuletzt verwendet"
+  },
+  "home": {
+    "title": "Reise-Tools & Rechner",
+    "subtitle": "Einfache Tools zur Reiseplanung, Kostenberechnung, Währungsumrechnung und Vorbereitung.",
+    "searchPlaceholder": "Was möchten Sie berechnen?",
+    "searchExamples": "Spritkosten, Roadtrip-Kosten, Reisebudget, Währung, Packliste, Jetlag",
+    "browseAll": "Alle Tools ansehen",
+    "popular": "Beliebte Tools",
+    "categories": "Kategorien",
+    "recentlyUsed": "Zuletzt verwendet",
+    "favorites": "Meine Reise-Tools",
+    "noFavorites": "Ihre gespeicherten Tools erscheinen hier."
+  },
+  "tools": {
+    "title": "Reise-Tools",
+    "subtitle": "Jedes Tool funktioniert sofort, ohne Konto.",
+    "searchPlaceholder": "Tools suchen",
+    "all": "Alle",
+    "openTool": "Tool öffnen",
+    "noResults": "Keine Tools passen zur Suche.",
+    "clearFilters": "Filter zurücksetzen"
+  },
+  "calculator": {
+    "calculate": "Berechnen",
+    "reset": "Zurücksetzen",
+    "copy": "Ergebnis kopieren",
+    "copied": "Kopiert",
+    "share": "Teilen",
+    "print": "Drucken",
+    "calculateNow": "Berechnen",
+    "enterDetails": "Geben Sie Ihre Reisedaten ein, um die Kosten zu berechnen.",
+    "result": "Ihr Ergebnis",
+    "total": "Gesamt",
+    "perPerson": "Pro Person",
+    "formula": "Formel und Methode",
+    "faq": "Häufige Fragen",
+    "related": "Verwandte Reise-Tools",
+    "addFavorite": "Zu Favoriten hinzufügen",
+    "removeFavorite": "Aus Favoriten entfernen",
+    "loading": "Lädt...",
+    "unavailable": "Live-Daten sind derzeit nicht verfügbar.",
+    "estimate": "Schätzung",
+    "resetTool": "Nur die Werte dieses Tools zurücksetzen."
+  },
+  "units": {
+    "metric": "Metrisch",
+    "imperial": "Imperial",
+    "unitSystem": "Einheitensystem"
+  },
+  "footer": {
+    "tools": "Tools",
+    "company": "Unternehmen",
+    "legal": "Rechtliches",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "cookies": "Cookie-Richtlinie",
+    "rights": "Alle Rechte vorbehalten.",
+    "disclaimer": "Travel Utility bietet Schätzungen und allgemeine Informationen, keine professionelle, rechtliche oder medizinische Beratung."
+  },
+  "cookies": {
+    "title": "Cookie-Einstellungen",
+    "message": "Wir verwenden notwendige Cookies für den Betrieb. Optionale Analyse- und Werbe-Cookies sind nur mit Ihrer Zustimmung aktiv.",
+    "accept": "Optionale akzeptieren",
+    "reject": "Nur notwendige",
+    "manage": "Einstellungen verwalten",
+    "essential": "Notwendig",
+    "analytics": "Analyse",
+    "advertising": "Werbung",
+    "save": "Einstellungen speichern"
+  },
+  "legal": {
+    "lastUpdated": "Zuletzt aktualisiert"
+  },
+  "common": {
+    "english": "Englisch",
+    "language": "Sprache",
+    "currency": "Währung",
+    "yes": "Ja",
+    "no": "Nein"
+  }
+}

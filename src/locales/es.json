@@ -1,0 +1,99 @@
+{
+  "brand": "Travel Utility",
+  "tagline": "Calculadoras de viaje y herramientas de planificación rápidas.",
+  "nav": {
+    "tools": "Herramientas",
+    "travelCalculators": "Calculadoras de viaje",
+    "roadTrips": "Road trips",
+    "currency": "Moneda",
+    "travelPlanning": "Planificación"
+  },
+  "header": {
+    "searchPlaceholder": "Buscar herramientas de viaje",
+    "menu": "Menú",
+    "closeMenu": "Cerrar menú",
+    "favorites": "Mis herramientas de viaje",
+    "recent": "Usadas recientemente"
+  },
+  "home": {
+    "title": "Herramientas y calculadoras de viaje",
+    "subtitle": "Herramientas simples para planificar viajes, calcular costes, convertir monedas y preparar tu viaje.",
+    "searchPlaceholder": "¿Qué necesitas calcular?",
+    "searchExamples": "Coste de combustible, Coste del viaje, Presupuesto, Moneda, Lista de equipaje, Jet lag",
+    "browseAll": "Ver todas las herramientas",
+    "popular": "Herramientas populares",
+    "categories": "Categorías",
+    "recentlyUsed": "Usadas recientemente",
+    "favorites": "Mis herramientas de viaje",
+    "noFavorites": "Tus herramientas guardadas aparecerán aquí."
+  },
+  "tools": {
+    "title": "Herramientas de viaje",
+    "subtitle": "Cada herramienta funciona al instante, sin cuenta.",
+    "searchPlaceholder": "Buscar herramientas",
+    "all": "Todas",
+    "openTool": "Abrir herramienta",
+    "noResults": "Ninguna herramienta coincide.",
+    "clearFilters": "Borrar filtros"
+  },
+  "calculator": {
+    "calculate": "Calcular",
+    "reset": "Restablecer",
+    "copy": "Copiar resultado",
+    "copied": "Copiado",
+    "share": "Compartir",
+    "print": "Imprimir",
+    "calculateNow": "Calcular",
+    "enterDetails": "Introduce los datos del viaje para calcular el coste.",
+    "result": "Tu resultado",
+    "total": "Total",
+    "perPerson": "Por persona",
+    "formula": "Fórmula y método",
+    "faq": "Preguntas frecuentes",
+    "related": "Herramientas relacionadas",
+    "addFavorite": "Añadir a favoritos",
+    "removeFavorite": "Quitar de favoritos",
+    "loading": "Cargando...",
+    "unavailable": "Los datos en vivo no están disponibles temporalmente.",
+    "estimate": "Estimación",
+    "resetTool": "Restablecer solo los valores de esta herramienta."
+  },
+  "units": {
+    "metric": "Métrico",
+    "imperial": "Imperial",
+    "unitSystem": "Sistema de unidades"
+  },
+  "footer": {
+    "tools": "Herramientas",
+    "company": "Empresa",
+    "legal": "Legal",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "cookies": "Cookies",
+    "rights": "Todos los derechos reservados.",
+    "disclaimer": "Travel Utility ofrece estimaciones e información general, no asesoramiento profesional, legal o médico."
+  },
+  "cookies": {
+    "title": "Preferencias de cookies",
+    "message": "Usamos cookies esenciales. Las cookies opcionales de analítica y publicidad están desactivadas salvo que las aceptes.",
+    "accept": "Aceptar opcionales",
+    "reject": "Solo esenciales",
+    "manage": "Gestionar preferencias",
+    "essential": "Esenciales",
+    "analytics": "Analítica",
+    "advertising": "Publicidad",
+    "save": "Guardar"
+  },
+  "legal": {
+    "lastUpdated": "Última actualización"
+  },
+  "common": {
+    "english": "Inglés",
+    "language": "Idioma",
+    "currency": "Moneda",
+    "yes": "Sí",
+    "no": "No"
+  }
+}
