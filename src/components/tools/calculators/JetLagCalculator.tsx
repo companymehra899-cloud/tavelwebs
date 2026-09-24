@@ -59,7 +59,7 @@ export function JetLagCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Flight and time difference</h2>
         <div className="mt-4 space-y-4">
@@ -102,7 +102,7 @@ export function JetLagCalculator() {
           </section>
         </>
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Choose your origin and destination to estimate the time difference and adjustment plan.</p>
+        <p className="calc-empty">Choose your origin and destination to estimate the time difference and adjustment plan.</p>
       )}
     </div>
   );

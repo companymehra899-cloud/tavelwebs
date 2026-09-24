@@ -1,8 +1,9 @@
 {
   "brand": "Travel Utility",
-  "tagline": "Snelle reiscalculators en planningstools.",
+  "tagline": "Eenvoudige tools voor slimmer reizen.",
   "nav": {
     "tools": "Tools",
+    "calculators": "Calculators",
     "travelCalculators": "Reiscalculators",
     "roadTrips": "Roadtrips",
     "currency": "Valuta",
@@ -10,38 +11,69 @@
   },
   "header": {
     "searchPlaceholder": "Zoek reistools",
+    "searchShort": "Zoeken",
     "menu": "Menu",
     "closeMenu": "Menu sluiten",
-    "favorites": "Mijn reistools",
+    "favorites": "Favorieten",
     "recent": "Recent gebruikt"
+  },
+  "search": {
+    "placeholder": "Zoek tools...",
+    "popular": "Populair",
+    "noResults": "Geen tools gevonden voor je zoekopdracht.",
+    "navigate": "Navigeren",
+    "open": "Openen"
+  },
+  "languages": {
+    "en": "Engels",
+    "de": "Duits",
+    "fr": "Frans",
+    "es": "Spaans",
+    "it": "Italiaans",
+    "nl": "Nederlands"
   },
   "home": {
     "title": "Reistools en calculators",
     "subtitle": "Eenvoudige tools om reizen te plannen, kosten te berekenen, valuta om te rekenen en je voor te bereiden.",
-    "searchPlaceholder": "Wat wil je berekenen?",
+    "heroBadge": "Gratis reistools",
+    "heroTitle": "Plan je reis",
+    "heroTitleAccent": "zonder giswerk",
+    "heroSubtitle": "Bereken reiskosten, reken valuta om, plan roadtrips en bereid je reis voor — op één snelle, privé plek.",
+    "searchPlaceholder": "Waar heb je hulp bij nodig?",
+    "searchButton": "Zoeken",
     "searchExamples": "Brandstofkosten, Roadtripkosten, Reisbudget, Valuta, Paklijst, Jetlag",
     "browseAll": "Alle tools bekijken",
-    "popular": "Populaire tools",
+    "popularLabel": "Populair",
+    "popular": "Populaire reistools",
+    "browseByCategory": "Ontdekken",
+    "viewAll": "Alles bekijken",
+    "exploreTools": "Tools verkennen",
+    "sectionRoad": "Roadtrips",
+    "sectionMoney": "Geld en budget",
+    "sectionTime": "Tijd en vluchten",
+    "sectionPlan": "Plannen en pakken",
     "categories": "Categorieën",
     "recentlyUsed": "Recent gebruikt",
-    "favorites": "Mijn reistools",
-    "noFavorites": "Je opgeslagen tools verschijnen hier."
+    "noRecent": "Tools die je opent verschijnen hier.",
+    "favorites": "Favorieten",
+    "noFavorites": "Nog geen favoriete tools."
   },
   "tools": {
     "title": "Reistools",
     "subtitle": "Elke tool werkt direct, zonder account.",
-    "searchPlaceholder": "Zoek tools",
+    "searchPlaceholder": "Zoek tools...",
     "all": "Alle",
     "openTool": "Tool openen",
-    "noResults": "Geen tools gevonden.",
+    "noResults": "Geen tools gevonden voor je zoekopdracht.",
     "clearFilters": "Filters wissen"
   },
   "calculator": {
     "calculate": "Berekenen",
     "reset": "Resetten",
-    "copy": "Resultaat kopiëren",
+    "copy": "Kopiëren",
     "copied": "Gekopieerd",
     "share": "Delen",
+    "shared": "Gedeeld",
     "print": "Printen",
     "calculateNow": "Berekenen",
     "enterDetails": "Voer je reisgegevens in om de kosten te berekenen.",
@@ -58,9 +90,92 @@
     "estimate": "Schatting",
     "resetTool": "Alleen de waarden van deze tool resetten."
   },
+  "currency": {
+    "amount": "Bedrag",
+    "from": "Van",
+    "to": "Naar",
+    "base": "Basisvaluta",
+    "swap": "Valuta omwisselen",
+    "quick": "Snel omrekenen",
+    "lastUpdated": "Koersen bijgewerkt",
+    "ratesHint": "Gebruikt referentiekoersen van de Europese Centrale Bank.",
+    "retry": "Opnieuw proberen",
+    "setAsMyCurrency": "Instellen als mijn valuta",
+    "disclaimer": "Koersen fluctueren en banken of kaarten kunnen een marge rekenen. Omgerekende bedragen zijn schattingen.",
+    "empty": "Voer een bedrag in en kies twee valuta's om het omgerekende totaal te zien."
+  },
+  "multi": {
+    "title": "Eén bedrag, veel valuta's",
+    "tableTitle": "Conversietabel",
+    "currency": "Valuta",
+    "amount": "Bedrag",
+    "rate": "Koers",
+    "empty": "Voer een bedrag en een basisvaluta in om het in veel valuta's tegelijk om te rekenen."
+  },
+  "packing": {
+    "intro": "Maak een persoonlijke, op regels gebaseerde paklijst voor je reis.",
+    "destination": "Bestemming",
+    "destinationPlaceholder": "bijv. Lissabon",
+    "duration": "Reisduur",
+    "month": "Reismaand",
+    "tripType": "Type reis",
+    "generate": "Paklijst genereren",
+    "addCustom": "Eigen item toevoegen",
+    "item": "Item",
+    "itemPlaceholder": "bijv. Reis kussen",
+    "category": "Categorie",
+    "addItem": "Item toevoegen",
+    "listTitle": "Paklijst",
+    "myTrip": "Mijn reis",
+    "printList": "Lijst printen",
+    "packed": "ingepakt",
+    "empty": "Nog geen items. Pas je reisgegevens aan en genereer een lijst.",
+    "emptyState": "Kies je reisgegevens en genereer een paklijst. De lijst gebruikt vaste regels, dus is altijd voorspelbaar."
+  },
+  "timezone": {
+    "convertTitle": "Datum en tijd omrekenen",
+    "dstNote": "Zomertijd wordt automatisch verwerkt via de IANA-tijdzonedatabase.",
+    "date": "Datum",
+    "time": "Tijd",
+    "fromZone": "Van tijdzone",
+    "toZone": "Naar tijdzone",
+    "converted": "Omgezet",
+    "dateChange": "De datum verandert in de bestemmingstijdzone",
+    "empty": "Voer een datum, tijd en beide tijdzones in om de omgezette tijd te zien."
+  },
+  "countdown": {
+    "details": "Reisdetails",
+    "name": "Reisnaam",
+    "namePlaceholder": "bijv. Zomer in Italië",
+    "date": "Reisdatum",
+    "time": "Reistijd",
+    "save": "Reis opslaan",
+    "saved": "Opgeslagen",
+    "localNote": "Het aftellen gebruikt de lokale tijdzone van je apparaat.",
+    "days": "Dagen",
+    "hours": "Uren",
+    "minutes": "Minuten",
+    "seconds": "Seconden",
+    "started": "Je reis is begonnen",
+    "startsIn": "Je reis begint over",
+    "empty": "Kies een datum om het aftellen te starten."
+  },
+  "checklist": {
+    "title": "Checklist voor vertrek",
+    "intro": "Blijf georganiseerd van boeking tot boarding. Vink taken af terwijl je gaat.",
+    "complete": "voltooid",
+    "addCustom": "Eigen taak toevoegen",
+    "task": "Taak",
+    "taskPlaceholder": "bijv. Parkeren op luchthaven boeken",
+    "add": "Taak toevoegen",
+    "myTasks": "Mijn taken",
+    "saved": "Je checklist wordt in deze browser opgeslagen."
+  },
   "units": {
     "metric": "Metrisch",
     "imperial": "Imperiaal",
+    "metricShort": "Metrisch",
+    "imperialShort": "Imperiaal",
     "unitSystem": "Eenhedenstelsel"
   },
   "footer": {
@@ -73,6 +188,7 @@
     "terms": "Voorwaarden",
     "cookies": "Cookiebeleid",
     "rights": "Alle rechten voorbehouden.",
+    "noAccount": "Geen account nodig",
     "disclaimer": "Travel Utility biedt schattingen en algemene informatie, geen professioneel, juridisch of medisch advies."
   },
   "cookies": {
@@ -93,6 +209,7 @@
     "english": "Engels",
     "language": "Taal",
     "currency": "Valuta",
+    "settings": "Instellingen",
     "yes": "Ja",
     "no": "Nee"
   }

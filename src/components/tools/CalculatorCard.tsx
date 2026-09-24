@@ -5,8 +5,9 @@ export function CalculatorCard({ children, id }: { children: ReactNode; id?: str
     <section
       id={id}
       aria-label="Calculator"
-      className="print-block rounded-[1.75rem] border border-border bg-surface p-5 shadow-[0_14px_36px_rgba(28,36,48,0.07)] sm:p-7"
+      className="print-block relative overflow-hidden rounded-2xl border border-border bg-surface p-5 shadow-[var(--shadow)] sm:p-7"
     >
+      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--accent),var(--cyan),transparent)]" />
       {children}
     </section>
   );
@@ -18,5 +19,5 @@ export function FieldGrid({ children, columns = 2 }: { children: ReactNode; colu
 }
 
 export function SectionHeading({ children, as: Tag = "h2" }: { children: ReactNode; as?: "h2" | "h3" }) {
-  return <Tag className="text-lg font-semibold tracking-tight text-ink">{children}</Tag>;
+  return <Tag className="text-base font-semibold tracking-tight text-ink">{children}</Tag>;
 }

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PreferencesProvider } from "@/components/providers/PreferencesProvider";
+import { SearchProvider } from "@/components/search/SearchProvider";
+import { SearchCommand } from "@/components/search/SearchCommand";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookiePreferences } from "@/components/CookiePreferences";
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f6e6b",
+  themeColor: "#0b1b33",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -48,20 +50,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <PreferencesProvider>
-          <a
-            href="#main"
-            className="no-print sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
-          >
-            Skip to content
-          </a>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main id="main" className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
-          <CookiePreferences />
+          <SearchProvider>
+            <a
+              href="#main"
+              className="no-print sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+            >
+              Skip to content
+            </a>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main id="main" className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <SearchCommand />
+            <CookiePreferences />
+          </SearchProvider>
         </PreferencesProvider>
       </body>
     </html>

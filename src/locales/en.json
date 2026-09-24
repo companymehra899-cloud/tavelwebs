@@ -1,8 +1,9 @@
 {
   "brand": "Travel Utility",
-  "tagline": "Fast travel calculators and planning tools.",
+  "tagline": "Simple tools for smarter travel.",
   "nav": {
     "tools": "Tools",
+    "calculators": "Calculators",
     "travelCalculators": "Travel Calculators",
     "roadTrips": "Road Trips",
     "currency": "Currency",
@@ -10,27 +11,57 @@
   },
   "header": {
     "searchPlaceholder": "Search travel tools",
+    "searchShort": "Search tools",
     "menu": "Menu",
     "closeMenu": "Close menu",
-    "favorites": "My Travel Tools",
+    "favorites": "Favorites",
     "recent": "Recently used"
+  },
+  "search": {
+    "placeholder": "Search tools...",
+    "popular": "Popular",
+    "noResults": "No tools match your search.",
+    "navigate": "Navigate",
+    "open": "Open"
+  },
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands"
   },
   "home": {
     "title": "Travel Tools & Calculators",
     "subtitle": "Simple tools to plan trips, calculate travel costs, convert currencies and prepare for your journey.",
-    "searchPlaceholder": "What do you need to calculate?",
+    "heroBadge": "Free travel utilities",
+    "heroTitle": "Plan your trip",
+    "heroTitleAccent": "without the guesswork",
+    "heroSubtitle": "Calculate travel costs, convert currencies, plan road trips and prepare for your journey — all in one fast, private workspace.",
+    "searchPlaceholder": "What do you need help with?",
+    "searchButton": "Search",
     "searchExamples": "Fuel cost, Road trip cost, Travel budget, Currency, Packing list, Jet lag",
     "browseAll": "Browse all tools",
-    "popular": "Popular tools",
+    "popularLabel": "Popular",
+    "popular": "Popular Travel Tools",
+    "browseByCategory": "Explore",
+    "viewAll": "View all",
+    "exploreTools": "Explore tools",
+    "sectionRoad": "Road trips",
+    "sectionMoney": "Money & budget",
+    "sectionTime": "Time & flights",
+    "sectionPlan": "Plan & pack",
     "categories": "Categories",
     "recentlyUsed": "Recently used",
-    "favorites": "My Travel Tools",
-    "noFavorites": "Your saved tools will appear here."
+    "noRecent": "Tools you open will appear here.",
+    "favorites": "Favorites",
+    "noFavorites": "No favorite tools yet."
   },
   "tools": {
     "title": "Travel Tools",
     "subtitle": "Every tool works immediately, with no account required.",
-    "searchPlaceholder": "Search tools",
+    "searchPlaceholder": "Search tools...",
     "all": "All",
     "openTool": "Open tool",
     "noResults": "No tools match your search.",
@@ -39,9 +70,10 @@
   "calculator": {
     "calculate": "Calculate",
     "reset": "Reset",
-    "copy": "Copy result",
+    "copy": "Copy",
     "copied": "Copied",
     "share": "Share",
+    "shared": "Shared",
     "print": "Print",
     "calculateNow": "Calculate",
     "enterDetails": "Enter your trip details to calculate the cost.",
@@ -58,9 +90,92 @@
     "estimate": "Estimate",
     "resetTool": "Reset only this tool's values."
   },
+  "currency": {
+    "amount": "Amount",
+    "from": "From",
+    "to": "To",
+    "base": "Base currency",
+    "swap": "Swap currencies",
+    "quick": "Quick convert",
+    "lastUpdated": "Rates updated",
+    "ratesHint": "Using European Central Bank reference rates.",
+    "retry": "Retry",
+    "setAsMyCurrency": "Set as my currency",
+    "disclaimer": "Rates fluctuate and card or bank providers may add a margin. Converted amounts are estimates.",
+    "empty": "Enter an amount and choose two currencies to see the converted total."
+  },
+  "multi": {
+    "title": "One amount, many currencies",
+    "tableTitle": "Conversion table",
+    "currency": "Currency",
+    "amount": "Amount",
+    "rate": "Rate",
+    "empty": "Enter an amount and a base currency to convert it into many currencies at once."
+  },
+  "packing": {
+    "intro": "Build a personalized, rule-based packing checklist for your trip.",
+    "destination": "Destination",
+    "destinationPlaceholder": "e.g. Lisbon",
+    "duration": "Trip duration",
+    "month": "Travel month",
+    "tripType": "Trip type",
+    "generate": "Generate packing list",
+    "addCustom": "Add a custom item",
+    "item": "Item",
+    "itemPlaceholder": "e.g. Travel pillow",
+    "category": "Category",
+    "addItem": "Add item",
+    "listTitle": "Packing list",
+    "myTrip": "My trip",
+    "printList": "Print list",
+    "packed": "packed",
+    "empty": "No items yet. Adjust your trip details and generate a list.",
+    "emptyState": "Choose your trip details and generate a packing list. The list uses fixed rules, so it is always predictable."
+  },
+  "timezone": {
+    "convertTitle": "Convert a date and time",
+    "dstNote": "Daylight saving is handled automatically using the IANA time zone database.",
+    "date": "Date",
+    "time": "Time",
+    "fromZone": "From time zone",
+    "toZone": "To time zone",
+    "converted": "Converted",
+    "dateChange": "The calendar date changes in the destination time zone",
+    "empty": "Enter a date, time and both time zones to see the converted time."
+  },
+  "countdown": {
+    "details": "Trip details",
+    "name": "Trip name",
+    "namePlaceholder": "e.g. Summer in Italy",
+    "date": "Trip date",
+    "time": "Trip time",
+    "save": "Save trip",
+    "saved": "Saved",
+    "localNote": "The countdown uses your device's local time zone.",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "started": "Your trip has started",
+    "startsIn": "Your trip starts in",
+    "empty": "Choose a date to start the countdown."
+  },
+  "checklist": {
+    "title": "Pre-trip checklist",
+    "intro": "Stay organised from booking to boarding. Tick items off as you go.",
+    "complete": "complete",
+    "addCustom": "Add a custom task",
+    "task": "Task",
+    "taskPlaceholder": "e.g. Book airport parking",
+    "add": "Add task",
+    "myTasks": "My tasks",
+    "saved": "Your checklist is saved in this browser."
+  },
   "units": {
     "metric": "Metric",
     "imperial": "Imperial",
+    "metricShort": "Metric",
+    "imperialShort": "Imperial",
     "unitSystem": "Unit system"
   },
   "footer": {
@@ -73,6 +188,7 @@
     "terms": "Terms",
     "cookies": "Cookie Policy",
     "rights": "All rights reserved.",
+    "noAccount": "No account required",
     "disclaimer": "Travel Utility provides estimates and general information, not professional, legal or medical advice."
   },
   "cookies": {
@@ -93,6 +209,7 @@
     "english": "English",
     "language": "Language",
     "currency": "Currency",
+    "settings": "Settings",
     "yes": "Yes",
     "no": "No"
   }

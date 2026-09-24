@@ -10,6 +10,7 @@ import { formatCurrency, parseNumberInputSafe } from "@/lib/calculator-utils";
 import { CURRENCIES } from "@/lib/constants";
 import { usePreferences } from "@/components/providers/PreferencesProvider";
 import { useRates } from "@/components/tools/useRates";
+import { Icon } from "@/components/ui/Icon";
 import type { CurrencyCode } from "@/lib/types";
 
 const options = CURRENCIES.map((currency) => ({ value: currency.code, label: `${currency.code} — ${currency.name}` }));
@@ -47,74 +48,91 @@ export function MultiCurrencyConverter() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
-        <h2 className="text-base font-semibold">One amount, many currencies</h2>
+        <h2 className="flex items-center gap-2 text-base font-semibold text-ink">
+          <Icon name="grid" size={17} className="text-accent" />
+          {t("multi.title")}
+        </h2>
         <p className="mt-1 text-xs text-muted">
-          {loading ? t("calculator.loading") : ratesError ? t("calculator.unavailable") : date ? `Rates last updated: ${date}` : ""}
+          {loading ? t("calculator.loading") : ratesError ? t("calculator.unavailable") : date ? `${t("currency.lastUpdated")}: ${date}` : t("currency.ratesHint")}
         </p>
         <div className="mt-4 space-y-4">
           <FieldGrid>
-            <TextField id="mc-amount" label="Amount" value={amount} onChange={setAmount} type="number" inputMode="decimal" min="0" step="any" />
-            <SelectField id="mc-base" label="Base currency" value={base} onChange={(value) => setBase(value as CurrencyCode)} options={options} />
+            <TextField id="mc-amount" label={t("currency.amount")} value={amount} onChange={setAmount} type="number" inputMode="decimal" min="0" step="any" suffix={base} />
+            <SelectField id="mc-base" label={t("currency.base")} value={base} onChange={(value) => setBase(value as CurrencyCode)} options={options} />
           </FieldGrid>
-          {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
+          {error ? <p role="alert" className="rounded-xl bg-error-soft px-3 py-2 text-sm text-error">{error}</p> : null}
           {ratesError ? (
-            <div className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
-              {t("calculator.unavailable")} <button type="button" className="underline" onClick={reload}>Retry</button>
+            <div className="flex items-center justify-between gap-3 rounded-xl bg-warning-soft px-3 py-2 text-sm text-warning">
+              <span>{t("calculator.unavailable")}</span>
+              <button type="button" className="inline-flex items-center gap-1 font-semibold underline" onClick={reload}>
+                <Icon name="refresh" size={13} />
+                {t("currency.retry")}
+              </button>
             </div>
           ) : null}
           <div className="flex flex-wrap gap-2">
-            <Button onClick={calculate} disabled={loading || !rates}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setAmount("1000"); setBase(currency); })}>{t("calculator.reset")}</Button>
+            <Button onClick={calculate} disabled={loading || !rates}>
+              <Icon name="calculator" size={15} />
+              {t("calculator.calculate")}
+            </Button>
+            <Button variant="ghost" onClick={() => reset(() => { setAmount("1000"); setBase(currency); })}>
+              {t("calculator.reset")}
+            </Button>
           </div>
         </div>
-        {result ? (
-          <div className="mt-5">
-            <div className="no-print mb-3 flex flex-wrap items-center justify-between gap-2">
-              <h3 className="text-sm font-semibold">Result table</h3>
-              <button
-                type="button"
-                className="text-xs text-brand underline"
-                onClick={() => navigator.clipboard.writeText(summary)}
-              >
-                Copy result
-              </button>
-            </div>
-            <div className="overflow-hidden rounded-xl border border-border">
-              <table className="w-full text-sm">
-                <caption className="sr-only">Converted amounts</caption>
-                <thead className="bg-slate-50 text-left text-xs uppercase text-muted">
-                  <tr>
-                    <th scope="col" className="px-3 py-2">Currency</th>
-                    <th scope="col" className="px-3 py-2 text-right">Amount</th>
-                    <th scope="col" className="px-3 py-2 text-right">Rate</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border bg-white">
-                  {result.map((row) => (
-                    <tr key={row.code}>
-                      <th scope="row" className="px-3 py-2 font-medium">{row.code}</th>
-                      <td className="px-3 py-2 text-right tabular-nums">
-                        {Number.isFinite(row.value) ? formatCurrency(row.value, row.code as CurrencyCode) : "—"}
-                      </td>
-                      <td className="px-3 py-2 text-right text-xs tabular-nums text-muted">
-                        {Number.isFinite(row.rate) ? row.rate : "—"}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="mt-2 text-xs text-muted">
-              Rates fluctuate and providers may add a margin. Amounts are estimates, not a quote.
-              {date ? ` Rates last updated: ${date}.` : ""}
-            </p>
-          </div>
-        ) : (
-          <p className="mt-5 rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter an amount and a base currency to convert it into many currencies at once.</p>
-        )}
       </CalculatorCard>
+
+      {result ? (
+        <section aria-label="Converted amounts" className="print-block animate-rise overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow)] lg:sticky lg:top-24">
+          <div className="flex items-center justify-between gap-3 border-b border-border p-5">
+            <div>
+              <p className="eyebrow text-accent">{t("multi.tableTitle")}</p>
+              <h2 className="mt-1 text-lg font-bold text-ink">
+                {formatCurrency(Number(amount), base)}
+              </h2>
+            </div>
+            <button
+              type="button"
+              className="no-print inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-border bg-surface px-3 text-xs font-semibold text-muted hover:text-ink"
+              onClick={() => navigator.clipboard.writeText(summary)}
+            >
+              <Icon name="copy" size={14} />
+              {t("calculator.copy")}
+            </button>
+          </div>
+          <div className="overflow-hidden">
+            <table className="w-full text-sm">
+              <caption className="sr-only">Converted amounts</caption>
+              <thead className="bg-surface-muted text-left text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                <tr>
+                  <th scope="col" className="px-5 py-2.5">{t("multi.currency")}</th>
+                  <th scope="col" className="px-5 py-2.5 text-right">{t("multi.amount")}</th>
+                  <th scope="col" className="px-5 py-2.5 text-right">{t("multi.rate")}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {result.map((row) => (
+                  <tr key={row.code} className="transition hover:bg-surface-muted">
+                    <th scope="row" className="px-5 py-2.5 text-left font-semibold text-ink">{row.code}</th>
+                    <td className="px-5 py-2.5 text-right font-medium tabular-nums text-ink">
+                      {Number.isFinite(row.value) ? formatCurrency(row.value, row.code as CurrencyCode) : "—"}
+                    </td>
+                    <td className="px-5 py-2.5 text-right text-xs tabular-nums text-muted">{Number.isFinite(row.rate) ? row.rate : "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="border-t border-border p-4 text-xs leading-6 text-muted">
+            {t("currency.disclaimer")}
+            {date ? ` ${t("currency.lastUpdated")}: ${date}.` : ""}
+          </p>
+        </section>
+      ) : (
+        <p className="calc-empty">{t("multi.empty")}</p>
+      )}
     </div>
   );
 }

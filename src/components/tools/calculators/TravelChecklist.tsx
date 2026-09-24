@@ -3,8 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { TextField } from "@/components/ui/Field";
+import { CalculatorCard } from "@/components/tools/CalculatorCard";
 import { STORAGE_KEYS, readJson, writeJson } from "@/lib/storage";
 import { usePreferences } from "@/components/providers/PreferencesProvider";
+import { Icon } from "@/components/ui/Icon";
 
 interface Task {
   id: string;
@@ -101,9 +103,7 @@ export function TravelChecklist() {
   function toggle(id: string) {
     persist({
       ...state,
-      completed: state.completed.includes(id)
-        ? state.completed.filter((item) => item !== id)
-        : [...state.completed, id],
+      completed: state.completed.includes(id) ? state.completed.filter((item) => item !== id) : [...state.completed, id],
     });
   }
 
@@ -123,64 +123,110 @@ export function TravelChecklist() {
   }
 
   const completedCount = allTasks.filter((task) => state.completed.includes(task.id)).length;
+  const progress = allTasks.length > 0 ? Math.round((completedCount / allTasks.length) * 100) : 0;
 
   return (
-    <div className="space-y-5">
-      <div className="no-print flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border bg-white p-4">
-        <p className="text-sm text-muted">
-          {completedCount} of {allTasks.length} tasks complete
-        </p>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" onClick={() => window.print()}>Print</Button>
-          <Button variant="danger" onClick={() => persist({ completed: [], custom: [] })}>{t("calculator.reset")}</Button>
-        </div>
-      </div>
+    <div className="calc-workspace">
+      <CalculatorCard>
+        <h2 className="flex items-center gap-2 text-base font-semibold text-ink">
+          <Icon name="check" size={17} className="text-accent" />
+          {t("checklist.title")}
+        </h2>
+        <p className="mt-1 text-xs text-muted">{t("checklist.intro")}</p>
 
-      <div className="space-y-4">
-        {CATEGORIES.map((category) => (
-          <section key={category.title} className="rounded-2xl border border-border bg-white p-4">
-            <h2 className="text-sm font-semibold text-foreground">{category.title}</h2>
-            <ul className="mt-2 space-y-1.5">
-              {category.tasks.map((task) => (
-                <li key={task.id}>
-                  <label className="flex items-center gap-2 text-sm">
-                    <input type="checkbox" className="h-4 w-4" checked={state.completed.includes(task.id)} onChange={() => toggle(task.id)} />
-                    <span className={state.completed.includes(task.id) ? "text-muted line-through" : ""}>{task.label}</span>
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-
-        {state.custom.length > 0 ? (
-          <section className="rounded-2xl border border-border bg-white p-4">
-            <h2 className="text-sm font-semibold text-foreground">My tasks</h2>
-            <ul className="mt-2 space-y-1.5">
-              {state.custom.map((task) => (
-                <li key={task.id} className="flex items-center justify-between gap-3">
-                  <label className="flex items-center gap-2 text-sm">
-                    <input type="checkbox" className="h-4 w-4" checked={state.completed.includes(task.id)} onChange={() => toggle(task.id)} />
-                    <span className={state.completed.includes(task.id) ? "text-muted line-through" : ""}>{task.label}</span>
-                  </label>
-                  <button type="button" onClick={() => deleteTask(task.id)} className="no-print text-xs text-red-600 hover:underline">Delete</button>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-      </div>
-
-      <div className="no-print rounded-2xl border border-border bg-white p-4">
-        <h2 className="text-sm font-semibold">Add a custom task</h2>
-        <div className="mt-3 flex flex-wrap items-end gap-2">
-          <div className="min-w-[220px] flex-1">
-            <TextField id="cl-new" label="Task" value={newTask} onChange={setNewTask} placeholder="e.g. Book airport parking" />
+        <div className="mt-5">
+          <div className="flex items-center justify-between text-xs font-medium text-muted">
+            <span>
+              {completedCount} / {allTasks.length} {t("checklist.complete")}
+            </span>
+            <span>{progress}%</span>
           </div>
-          <Button onClick={addTask}>Add task</Button>
+          <div className="mt-2 h-2 overflow-hidden rounded-full bg-surface-muted">
+            <div className="h-full rounded-full bg-[linear-gradient(90deg,var(--accent),var(--cyan))] transition-all duration-500" style={{ width: `${progress}%` }} />
+          </div>
         </div>
-        <p className="mt-3 text-xs text-muted">Your checklist is saved in this browser.</p>
-      </div>
+
+        <div className="mt-5 rounded-xl border border-border bg-surface-muted p-4">
+          <h3 className="text-sm font-semibold text-ink">{t("checklist.addCustom")}</h3>
+          <div className="mt-3 flex flex-wrap items-end gap-2">
+            <div className="min-w-[200px] flex-1">
+              <TextField id="cl-new" label={t("checklist.task")} value={newTask} onChange={setNewTask} placeholder={t("checklist.taskPlaceholder")} />
+            </div>
+            <Button onClick={addTask}>
+              <Icon name="plus" size={14} />
+              {t("checklist.add")}
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button variant="secondary" onClick={() => window.print()}>
+            <Icon name="print" size={14} />
+            {t("calculator.print")}
+          </Button>
+          <Button variant="danger" onClick={() => persist({ completed: [], custom: [] })}>
+            <Icon name="refresh" size={14} />
+            {t("calculator.reset")}
+          </Button>
+        </div>
+        <p className="mt-3 text-xs text-muted">{t("checklist.saved")}</p>
+      </CalculatorCard>
+
+      <section aria-label="Checklist" className="print-block overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow)] lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+        <div className="space-y-5 p-5">
+          {CATEGORIES.map((category) => (
+            <div key={category.title}>
+              <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                {category.title}
+              </h3>
+              <ul className="mt-2 space-y-0.5">
+                {category.tasks.map((task) => {
+                  const done = state.completed.includes(task.id);
+                  return (
+                    <li key={task.id}>
+                      <label className="flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm hover:bg-surface-muted">
+                        <input type="checkbox" checked={done} onChange={() => toggle(task.id)} className="h-4 w-4 accent-[var(--accent)]" />
+                        <span className={done ? "text-muted line-through" : "text-ink"}>{task.label}</span>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+
+          {state.custom.length > 0 ? (
+            <div>
+              <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                {t("checklist.myTasks")}
+              </h3>
+              <ul className="mt-2 space-y-0.5">
+                {state.custom.map((task) => {
+                  const done = state.completed.includes(task.id);
+                  return (
+                    <li key={task.id} className="group flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 hover:bg-surface-muted">
+                      <label className="flex flex-1 cursor-pointer items-center gap-2.5 text-sm">
+                        <input type="checkbox" checked={done} onChange={() => toggle(task.id)} className="h-4 w-4 accent-[var(--accent)]" />
+                        <span className={done ? "text-muted line-through" : "text-ink"}>{task.label}</span>
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => deleteTask(task.id)}
+                        aria-label="Delete task"
+                        className="no-print text-muted opacity-0 transition hover:text-error group-hover:opacity-100"
+                      >
+                        <Icon name="close" size={14} />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      </section>
     </div>
   );
 }

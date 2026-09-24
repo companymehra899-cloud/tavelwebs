@@ -69,7 +69,7 @@ export function TripCostCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Trip category totals</h2>
         <div className="mt-4 space-y-4">
@@ -91,7 +91,7 @@ export function TripCostCalculator() {
       {result ? (
         <ResultCard toolName="Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/trip-cost-calculator?travelers=${travelers}`} onReset={() => reset(() => { setTransport("400"); setAccommodation("600"); setFood("300"); setActivities("150"); setOther("100"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your transport, accommodation, food and activity costs to see the trip total.</p>
+        <p className="calc-empty">Enter your transport, accommodation, food and activity costs to see the trip total.</p>
       )}
     </div>
   );

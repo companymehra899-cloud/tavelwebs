@@ -103,7 +103,7 @@ export function RoadTripCalculator() {
   const sharePath = `/tools/road-trip-cost-calculator?distance=${distance}&consumption=${consumption}&fuelPrice=${fuelPrice}&travelers=${travelers}`;
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-base font-semibold">Trip details</h2>
@@ -170,7 +170,7 @@ export function RoadTripCalculator() {
       {result ? (
         <ResultCard toolName="Road Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={sharePath} onReset={() => reset(() => { setDistance("500"); setConsumption("6.5"); setFuelPrice("1.75"); setTravelers("2"); setTolls("0"); setParking("0"); setAccommodation("0"); setOther("0"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your route details to estimate fuel, tolls and the total road trip cost.</p>
+        <p className="calc-empty">Enter your route details to estimate fuel, tolls and the total road trip cost.</p>
       )}
     </div>
   );

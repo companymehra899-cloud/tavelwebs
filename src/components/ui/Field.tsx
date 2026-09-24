@@ -13,13 +13,13 @@ interface FieldWrapperProps {
 export function FieldWrapper({ label, htmlFor, hint, error, children }: FieldWrapperProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="text-sm font-medium text-foreground">
+      <label htmlFor={htmlFor} className="text-xs font-semibold text-ink">
         {label}
       </label>
       {children}
       {hint && !error ? <p className="text-xs text-muted">{hint}</p> : null}
       {error ? (
-        <p id={`${htmlFor}-error`} role="alert" className="text-xs font-medium text-red-600">
+        <p id={`${htmlFor}-error`} role="alert" className="text-xs font-medium text-error">
           {error}
         </p>
       ) : null}
@@ -27,8 +27,10 @@ export function FieldWrapper({ label, htmlFor, hint, error, children }: FieldWra
   );
 }
 
-const inputClass =
-  "min-h-11 w-full rounded-2xl border border-border bg-white px-3.5 py-2 text-sm text-foreground shadow-sm transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15";
+export const inputClass =
+  "min-h-11 w-full rounded-xl border border-border bg-surface px-3.5 py-2 text-sm text-ink shadow-[var(--shadow-sm)] transition placeholder:text-muted/70 focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15";
+
+const labelClass = "text-xs font-semibold text-ink";
 
 export interface TextFieldProps {
   id: string;
@@ -44,6 +46,8 @@ export interface TextFieldProps {
   min?: string;
   max?: string;
   autoComplete?: string;
+  prefix?: string;
+  suffix?: string;
 }
 
 export function TextField({
@@ -60,25 +64,54 @@ export function TextField({
   min,
   max,
   autoComplete,
+  prefix,
+  suffix,
 }: TextFieldProps) {
   return (
     <FieldWrapper label={label} htmlFor={id} hint={hint} error={error}>
-      <input
-        id={id}
-        name={id}
-        type={type}
-        inputMode={inputMode}
-        step={step}
-        min={min}
-        max={max}
-        autoComplete={autoComplete}
-        placeholder={placeholder}
-        value={value}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error ? `${id}-error` : undefined}
-        onChange={(event) => onChange(event.target.value)}
-        className={inputClass}
-      />
+      {prefix || suffix ? (
+        <div
+          className={`flex items-stretch overflow-hidden rounded-xl border border-border bg-surface shadow-[var(--shadow-sm)] transition focus-within:border-accent focus-within:ring-4 focus-within:ring-accent/15 ${
+            error ? "border-error" : ""
+          }`}
+        >
+          {prefix ? <span className="flex items-center bg-surface-muted px-3 text-sm font-medium text-muted">{prefix}</span> : null}
+          <input
+            id={id}
+            name={id}
+            type={type}
+            inputMode={inputMode}
+            step={step}
+            min={min}
+            max={max}
+            autoComplete={autoComplete}
+            placeholder={placeholder}
+            value={value}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error ? `${id}-error` : undefined}
+            onChange={(event) => onChange(event.target.value)}
+            className="min-h-11 w-full bg-transparent px-3.5 py-2 text-sm text-ink outline-none placeholder:text-muted/70"
+          />
+          {suffix ? <span className="flex items-center border-l border-border bg-surface-muted px-3 text-sm font-medium text-muted">{suffix}</span> : null}
+        </div>
+      ) : (
+        <input
+          id={id}
+          name={id}
+          type={type}
+          inputMode={inputMode}
+          step={step}
+          min={min}
+          max={max}
+          autoComplete={autoComplete}
+          placeholder={placeholder}
+          value={value}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? `${id}-error` : undefined}
+          onChange={(event) => onChange(event.target.value)}
+          className={`${inputClass} ${error ? "border-error focus:ring-error/15" : ""}`}
+        />
+      )}
     </FieldWrapper>
   );
 }
@@ -103,7 +136,7 @@ export function SelectField({ id, label, value, onChange, options, hint, error }
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : undefined}
         onChange={(event) => onChange(event.target.value)}
-        className={inputClass}
+        className={`${inputClass} ${error ? "border-error focus:ring-error/15" : ""}`}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
@@ -135,10 +168,10 @@ export function DateInput({ id, label, value, onChange, hint, error }: DateInput
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : undefined}
         onChange={(event) => onChange(event.target.value)}
-        className={inputClass}
+        className={`${inputClass} ${error ? "border-error focus:ring-error/15" : ""}`}
       />
     </FieldWrapper>
   );
 }
 
-export { inputClass };
+export { labelClass };

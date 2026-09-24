@@ -64,7 +64,7 @@ export function FlightTimeCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Route</h2>
         <p className="mt-1 text-xs text-muted">Duration is a straight-line estimate, not an airline schedule.</p>
@@ -96,7 +96,7 @@ export function FlightTimeCalculator() {
       {result ? (
         <ResultCard toolName="Flight Time" title={`${t("calculator.result")} (${t("calculator.estimate")})`} rows={rows} summary={summary} sharePath={`/tools/flight-time-calculator?from=${originCode}&to=${destinationCode}`} onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter an origin and destination to estimate the flight distance and duration.</p>
+        <p className="calc-empty">Enter an origin and destination to estimate the flight distance and duration.</p>
       )}
     </div>
   );

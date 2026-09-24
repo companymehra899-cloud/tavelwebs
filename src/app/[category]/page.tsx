@@ -50,11 +50,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   return (
     <div className="page-shell py-10 sm:py-12">
       <nav aria-label="Breadcrumb" className="text-xs text-muted">
-        <Link href="/" className="hover:text-brand">Home</Link>
+        <Link href="/" className="hover:text-accent">Home</Link>
         <span aria-hidden="true"> / </span>
-        <span className="text-foreground">{heading}</span>
+        <span className="font-semibold text-ink">{heading}</span>
       </nav>
-      <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{heading}</h1>
+      <p className="eyebrow mt-5 text-accent">Category</p>
+      <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{heading}</h1>
       <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">{meta?.description}</p>
       <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePreferences } from "@/components/providers/PreferencesProvider";
+import { Icon } from "@/components/ui/Icon";
 
 export function Footer() {
   const { t } = usePreferences();
@@ -12,8 +13,8 @@ export function Footer() {
       heading: t("footer.tools"),
       links: [
         { href: "/tools", label: t("nav.tools") },
-        { href: "/travel-calculators", label: t("nav.travelCalculators") },
         { href: "/road-trips", label: t("nav.roadTrips") },
+        { href: "/travel-calculators", label: t("nav.calculators") },
         { href: "/currency", label: t("nav.currency") },
         { href: "/travel-planning", label: t("nav.travelPlanning") },
       ],
@@ -36,21 +37,28 @@ export function Footer() {
   ];
 
   return (
-    <footer className="no-print mt-16 border-t border-border bg-[rgba(255,253,248,0.92)]">
-      <div className="page-shell grid grid-cols-2 gap-8 py-12 sm:grid-cols-4">
+    <footer className="no-print mt-20 border-t border-border bg-surface">
+      <div className="page-shell grid grid-cols-2 gap-x-8 gap-y-10 py-14 sm:grid-cols-4">
         <div className="col-span-2 sm:col-span-1">
-          <p className="text-lg font-bold tracking-tight text-ink">{t("brand")}</p>
-          <p className="mt-3 max-w-xs text-sm leading-6 text-muted">{t("tagline")}</p>
+          <Link href="/" className="flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink">
+            <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-white">
+              <Icon name="compass" size={20} />
+            </span>
+            {t("brand")}
+          </Link>
+          <p className="mt-4 max-w-xs text-sm leading-6 text-muted">{t("tagline")}</p>
+          <p className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent-strong">
+            <Icon name="shield" size={13} />
+            {t("footer.noAccount")}
+          </p>
         </div>
         {columns.map((column) => (
           <div key={column.heading}>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-ink">
-              {column.heading}
-            </h2>
+            <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink">{column.heading}</h2>
             <ul className="mt-4 space-y-2.5">
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-muted hover:text-brand">
+                  <Link href={link.href} className="text-sm text-muted transition hover:text-accent">
                     {link.label}
                   </Link>
                 </li>
@@ -59,10 +67,10 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-border">
+      <div className="border-t border-border bg-surface-muted">
         <div className="page-shell flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            (c) {year} {t("brand")}. {t("footer.rights")}
+            © {year} {t("brand")}. {t("footer.rights")}
           </p>
           <p className="max-w-xl">{t("footer.disclaimer")}</p>
         </div>

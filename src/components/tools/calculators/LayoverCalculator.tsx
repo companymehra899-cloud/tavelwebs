@@ -53,7 +53,7 @@ export function LayoverCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Connection time</h2>
         <div className="mt-4 space-y-4">
@@ -75,7 +75,7 @@ export function LayoverCalculator() {
       {result ? (
         <ResultCard toolName="Layover" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/layover-calculator" onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your arrival and departure times to calculate the layover length.</p>
+        <p className="calc-empty">Enter your arrival and departure times to calculate the layover length.</p>
       )}
     </div>
   );

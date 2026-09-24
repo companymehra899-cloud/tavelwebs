@@ -50,7 +50,7 @@ export function TravelMoneyCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Spending plan</h2>
         <p className="mt-1 text-xs text-muted">Based only on the values you enter. The tool does not know real destination prices.</p>
@@ -71,7 +71,7 @@ export function TravelMoneyCalculator() {
       {result ? (
         <ResultCard toolName="Travel Money" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/travel-money-calculator" onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your daily budget, trip length and travellers to see how much money to plan for.</p>
+        <p className="calc-empty">Enter your daily budget, trip length and travellers to see how much money to plan for.</p>
       )}
     </div>
   );

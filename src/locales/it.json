@@ -1,8 +1,9 @@
 {
   "brand": "Travel Utility",
-  "tagline": "Calcolatori di viaggio e strumenti di pianificazione rapidi.",
+  "tagline": "Strumenti semplici per viaggiare in modo più intelligente.",
   "nav": {
     "tools": "Strumenti",
+    "calculators": "Calcolatrici",
     "travelCalculators": "Calcolatori di viaggio",
     "roadTrips": "Road trip",
     "currency": "Valuta",
@@ -10,38 +11,69 @@
   },
   "header": {
     "searchPlaceholder": "Cerca strumenti di viaggio",
+    "searchShort": "Cerca",
     "menu": "Menu",
     "closeMenu": "Chiudi menu",
-    "favorites": "I miei strumenti",
+    "favorites": "Preferiti",
     "recent": "Usati di recente"
+  },
+  "search": {
+    "placeholder": "Cerca strumenti...",
+    "popular": "Popolari",
+    "noResults": "Nessuno strumento corrisponde alla ricerca.",
+    "navigate": "Naviga",
+    "open": "Apri"
+  },
+  "languages": {
+    "en": "Inglese",
+    "de": "Tedesco",
+    "fr": "Francese",
+    "es": "Spagnolo",
+    "it": "Italiano",
+    "nl": "Olandese"
   },
   "home": {
     "title": "Strumenti e calcolatori di viaggio",
     "subtitle": "Strumenti semplici per pianificare viaggi, calcolare costi, convertire valute e prepararsi alla partenza.",
-    "searchPlaceholder": "Cosa vuoi calcolare?",
+    "heroBadge": "Strumenti di viaggio gratuiti",
+    "heroTitle": "Pianifica il tuo viaggio",
+    "heroTitleAccent": "senza improvvisare",
+    "heroSubtitle": "Calcola i costi di viaggio, converti le valute, pianifica road trip e prepara la partenza — in uno spazio veloce e privato.",
+    "searchPlaceholder": "Su cosa ti serve aiuto?",
+    "searchButton": "Cerca",
     "searchExamples": "Costo carburante, Costo road trip, Budget di viaggio, Valuta, Lista bagagli, Jet lag",
     "browseAll": "Vedi tutti gli strumenti",
-    "popular": "Strumenti popolari",
+    "popularLabel": "Popolare",
+    "popular": "Strumenti di viaggio popolari",
+    "browseByCategory": "Esplora",
+    "viewAll": "Vedi tutto",
+    "exploreTools": "Esplora gli strumenti",
+    "sectionRoad": "Road trip",
+    "sectionMoney": "Denaro e budget",
+    "sectionTime": "Tempo e voli",
+    "sectionPlan": "Pianifica e prepara",
     "categories": "Categorie",
     "recentlyUsed": "Usati di recente",
-    "favorites": "I miei strumenti",
-    "noFavorites": "Gli strumenti salvati appariranno qui."
+    "noRecent": "Gli strumenti che apri appariranno qui.",
+    "favorites": "Preferiti",
+    "noFavorites": "Nessuno strumento preferito ancora."
   },
   "tools": {
     "title": "Strumenti di viaggio",
     "subtitle": "Ogni strumento funziona subito, senza account.",
-    "searchPlaceholder": "Cerca strumenti",
+    "searchPlaceholder": "Cerca strumenti...",
     "all": "Tutti",
     "openTool": "Apri strumento",
-    "noResults": "Nessuno strumento corrisponde.",
+    "noResults": "Nessuno strumento corrisponde alla ricerca.",
     "clearFilters": "Cancella filtri"
   },
   "calculator": {
     "calculate": "Calcola",
     "reset": "Reimposta",
-    "copy": "Copia risultato",
+    "copy": "Copia",
     "copied": "Copiato",
     "share": "Condividi",
+    "shared": "Condiviso",
     "print": "Stampa",
     "calculateNow": "Calcola",
     "enterDetails": "Inserisci i dati del viaggio per calcolare il costo.",
@@ -58,9 +90,92 @@
     "estimate": "Stima",
     "resetTool": "Reimposta solo i valori di questo strumento."
   },
+  "currency": {
+    "amount": "Importo",
+    "from": "Da",
+    "to": "A",
+    "base": "Valuta di base",
+    "swap": "Inverti valute",
+    "quick": "Conversione rapida",
+    "lastUpdated": "Tassi aggiornati",
+    "ratesHint": "Tassi di riferimento della Banca Centrale Europea.",
+    "retry": "Riprova",
+    "setAsMyCurrency": "Imposta come mia valuta",
+    "disclaimer": "I tassi fluttuano e banche o carte possono applicare un margine. Gli importi convertiti sono stime.",
+    "empty": "Inserisci un importo e scegli due valute per vedere il totale convertito."
+  },
+  "multi": {
+    "title": "Un importo, molte valute",
+    "tableTitle": "Tabella di conversione",
+    "currency": "Valuta",
+    "amount": "Importo",
+    "rate": "Tasso",
+    "empty": "Inserisci un importo e una valuta di base per convertirlo in molte valute contemporaneamente."
+  },
+  "packing": {
+    "intro": "Crea una lista bagagli personalizzata e basata su regole per il tuo viaggio.",
+    "destination": "Destinazione",
+    "destinationPlaceholder": "es. Lisbona",
+    "duration": "Durata del viaggio",
+    "month": "Mese del viaggio",
+    "tripType": "Tipo di viaggio",
+    "generate": "Genera lista bagagli",
+    "addCustom": "Aggiungi un articolo personalizzato",
+    "item": "Articolo",
+    "itemPlaceholder": "es. Cuscino da viaggio",
+    "category": "Categoria",
+    "addItem": "Aggiungi articolo",
+    "listTitle": "Lista bagagli",
+    "myTrip": "Il mio viaggio",
+    "printList": "Stampa lista",
+    "packed": "preparato",
+    "empty": "Nessun articolo ancora. Modifica i dati del viaggio e genera una lista.",
+    "emptyState": "Scegli i dati del tuo viaggio e genera una lista bagagli. La lista usa regole fisse, quindi è sempre prevedibile."
+  },
+  "timezone": {
+    "convertTitle": "Converti data e ora",
+    "dstNote": "L'ora legale è gestita automaticamente tramite il database dei fusi orari IANA.",
+    "date": "Data",
+    "time": "Ora",
+    "fromZone": "Fuso orario di partenza",
+    "toZone": "Fuso orario di arrivo",
+    "converted": "Convertito",
+    "dateChange": "La data cambia nel fuso orario di destinazione",
+    "empty": "Inserisci data, ora ed entrambi i fusi orari per vedere l'ora convertita."
+  },
+  "countdown": {
+    "details": "Dettagli del viaggio",
+    "name": "Nome del viaggio",
+    "namePlaceholder": "es. Estate in Italia",
+    "date": "Data del viaggio",
+    "time": "Ora del viaggio",
+    "save": "Salva viaggio",
+    "saved": "Salvato",
+    "localNote": "Il conto alla rovescia usa il fuso orario locale del tuo dispositivo.",
+    "days": "Giorni",
+    "hours": "Ore",
+    "minutes": "Minuti",
+    "seconds": "Secondi",
+    "started": "Il tuo viaggio è iniziato",
+    "startsIn": "Il tuo viaggio inizia tra",
+    "empty": "Scegli una data per avviare il conto alla rovescia."
+  },
+  "checklist": {
+    "title": "Checklist prima della partenza",
+    "intro": "Resta organizzato dalla prenotazione all'imbarco. Spunta le attività man mano.",
+    "complete": "completato",
+    "addCustom": "Aggiungi un'attività personalizzata",
+    "task": "Attività",
+    "taskPlaceholder": "es. Prenotare il parcheggio in aeroporto",
+    "add": "Aggiungi attività",
+    "myTasks": "Le mie attività",
+    "saved": "La tua checklist è salvata in questo browser."
+  },
   "units": {
     "metric": "Metrico",
     "imperial": "Imperiale",
+    "metricShort": "Metrico",
+    "imperialShort": "Imperiale",
     "unitSystem": "Sistema di unità"
   },
   "footer": {
@@ -73,6 +188,7 @@
     "terms": "Termini",
     "cookies": "Cookie",
     "rights": "Tutti i diritti riservati.",
+    "noAccount": "Nessun account richiesto",
     "disclaimer": "Travel Utility fornisce stime e informazioni generali, non consulenza professionale, legale o medica."
   },
   "cookies": {
@@ -93,6 +209,7 @@
     "english": "Inglese",
     "language": "Lingua",
     "currency": "Valuta",
+    "settings": "Impostazioni",
     "yes": "Sì",
     "no": "No"
   }

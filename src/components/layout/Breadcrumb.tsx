@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon } from "@/components/ui/Icon";
 
 export function Breadcrumb({ items }: { items: { label: string; href?: string }[] }) {
   return (
@@ -7,15 +8,15 @@ export function Breadcrumb({ items }: { items: { label: string; href?: string }[
         {items.map((item, index) => (
           <li key={`${item.label}-${index}`} className="flex items-center gap-1.5">
             {item.href ? (
-              <Link href={item.href} className="hover:text-brand">
+              <Link href={item.href} className="transition hover:text-accent">
                 {item.label}
               </Link>
             ) : (
-              <span aria-current="page" className="font-medium text-ink">
+              <span aria-current="page" className="font-semibold text-ink">
                 {item.label}
               </span>
             )}
-            {index < items.length - 1 ? <span aria-hidden="true">/</span> : null}
+            {index < items.length - 1 ? <Icon name="chevron-down" size={12} className="-rotate-90 text-border-strong" /> : null}
           </li>
         ))}
       </ol>

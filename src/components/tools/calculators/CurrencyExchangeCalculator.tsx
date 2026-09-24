@@ -80,7 +80,7 @@ export function CurrencyExchangeCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Compare exchange rates</h2>
         <p className="mt-1 text-xs text-muted">
@@ -109,7 +109,7 @@ export function CurrencyExchangeCalculator() {
       {result ? (
         <ResultCard toolName="Currency Exchange" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/currency-exchange-calculator?amount=${amount}&from=${from}&to=${to}`} onReset={() => reset(() => { setAmount("1000"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter an amount, the offered rate and any fee to see the real cost of exchanging money.</p>
+        <p className="calc-empty">Enter an amount, the offered rate and any fee to see the real cost of exchanging money.</p>
       )}
     </div>
   );

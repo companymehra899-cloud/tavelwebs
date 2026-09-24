@@ -85,7 +85,7 @@ export function FuelTollCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-base font-semibold">Fuel and tolls</h2>
@@ -122,7 +122,7 @@ export function FuelTollCalculator() {
       {result ? (
         <ResultCard toolName="Fuel + Toll" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/fuel-toll-calculator?distance=${distance}&fuelPrice=${fuelPrice}&toll=${toll}`} onReset={() => reset(() => { setDistance("400"); setConsumption("6"); setFuelPrice("1.75"); setToll("30"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter your distance, fuel use and tolls to estimate the total cost.</p>
+        <p className="calc-empty">Enter your distance, fuel use and tolls to estimate the total cost.</p>
       )}
     </div>
   );

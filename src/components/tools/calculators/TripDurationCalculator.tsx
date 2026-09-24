@@ -45,7 +45,7 @@ export function TripDurationCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <h2 className="text-base font-semibold">Date range</h2>
         <div className="mt-4 space-y-4">
@@ -67,7 +67,7 @@ export function TripDurationCalculator() {
       {result ? (
         <ResultCard toolName="Trip Duration" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/trip-duration-calculator" onReset={() => reset(() => {})} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Pick a start and end date to see the trip length in days, nights and weeks.</p>
+        <p className="calc-empty">Pick a start and end date to see the trip length in days, nights and weeks.</p>
       )}
     </div>
   );

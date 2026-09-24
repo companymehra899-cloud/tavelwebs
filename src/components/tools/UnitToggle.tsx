@@ -5,7 +5,7 @@ import { usePreferences } from "@/components/providers/PreferencesProvider";
 export function UnitToggle() {
   const { units, setUnits, t } = usePreferences();
   return (
-    <fieldset className="no-print inline-flex items-center rounded-lg border border-border bg-white p-0.5">
+    <fieldset className="no-print inline-flex items-center rounded-full border border-border bg-surface-muted p-0.5">
       <legend className="sr-only">{t("units.unitSystem")}</legend>
       {(["metric", "imperial"] as const).map((value) => (
         <button
@@ -13,11 +13,11 @@ export function UnitToggle() {
           type="button"
           aria-pressed={units === value}
           onClick={() => setUnits(value)}
-          className={`min-h-9 rounded-md px-3 text-xs font-medium transition ${
-            units === value ? "bg-brand text-white" : "text-muted hover:bg-slate-100"
+          className={`min-h-8 rounded-full px-3 text-xs font-semibold transition ${
+            units === value ? "bg-brand text-white shadow-sm" : "text-muted hover:text-ink"
           }`}
         >
-          {value === "metric" ? t("units.metric") : t("units.imperial")}
+          {value === "metric" ? t("units.metricShort") : t("units.imperialShort")}
         </button>
       ))}
     </fieldset>

@@ -1,8 +1,9 @@
 {
   "brand": "Travel Utility",
-  "tagline": "Schnelle Reise-Rechner und Planungstools.",
+  "tagline": "Einfache Tools für smarteres Reisen.",
   "nav": {
     "tools": "Tools",
+    "calculators": "Rechner",
     "travelCalculators": "Reise-Rechner",
     "roadTrips": "Roadtrips",
     "currency": "Währung",
@@ -10,27 +11,57 @@
   },
   "header": {
     "searchPlaceholder": "Reise-Tools suchen",
+    "searchShort": "Tools suchen",
     "menu": "Menü",
     "closeMenu": "Menü schließen",
-    "favorites": "Meine Reise-Tools",
+    "favorites": "Favoriten",
     "recent": "Zuletzt verwendet"
+  },
+  "search": {
+    "placeholder": "Tools suchen...",
+    "popular": "Beliebt",
+    "noResults": "Keine Tools passen zur Suche.",
+    "navigate": "Navigieren",
+    "open": "Öffnen"
+  },
+  "languages": {
+    "en": "Englisch",
+    "de": "Deutsch",
+    "fr": "Französisch",
+    "es": "Spanisch",
+    "it": "Italienisch",
+    "nl": "Niederländisch"
   },
   "home": {
     "title": "Reise-Tools & Rechner",
     "subtitle": "Einfache Tools zur Reiseplanung, Kostenberechnung, Währungsumrechnung und Vorbereitung.",
-    "searchPlaceholder": "Was möchten Sie berechnen?",
+    "heroBadge": "Kostenlose Reise-Tools",
+    "heroTitle": "Planen Sie Ihre Reise",
+    "heroTitleAccent": "ohne Rätselraten",
+    "heroSubtitle": "Berechnen Sie Reisekosten, rechnen Sie Währungen um, planen Sie Roadtrips und bereiten Sie sich auf Ihre Reise vor – an einem schnellen, privaten Ort.",
+    "searchPlaceholder": "Wobei brauchen Sie Hilfe?",
+    "searchButton": "Suchen",
     "searchExamples": "Spritkosten, Roadtrip-Kosten, Reisebudget, Währung, Packliste, Jetlag",
     "browseAll": "Alle Tools ansehen",
-    "popular": "Beliebte Tools",
+    "popularLabel": "Beliebt",
+    "popular": "Beliebte Reise-Tools",
+    "browseByCategory": "Entdecken",
+    "viewAll": "Alle ansehen",
+    "exploreTools": "Tools entdecken",
+    "sectionRoad": "Roadtrips",
+    "sectionMoney": "Geld & Budget",
+    "sectionTime": "Zeit & Flüge",
+    "sectionPlan": "Planen & Packen",
     "categories": "Kategorien",
     "recentlyUsed": "Zuletzt verwendet",
-    "favorites": "Meine Reise-Tools",
-    "noFavorites": "Ihre gespeicherten Tools erscheinen hier."
+    "noRecent": "Tools, die Sie öffnen, erscheinen hier.",
+    "favorites": "Favoriten",
+    "noFavorites": "Noch keine Favoriten."
   },
   "tools": {
     "title": "Reise-Tools",
     "subtitle": "Jedes Tool funktioniert sofort, ohne Konto.",
-    "searchPlaceholder": "Tools suchen",
+    "searchPlaceholder": "Tools suchen...",
     "all": "Alle",
     "openTool": "Tool öffnen",
     "noResults": "Keine Tools passen zur Suche.",
@@ -39,9 +70,10 @@
   "calculator": {
     "calculate": "Berechnen",
     "reset": "Zurücksetzen",
-    "copy": "Ergebnis kopieren",
+    "copy": "Kopieren",
     "copied": "Kopiert",
     "share": "Teilen",
+    "shared": "Geteilt",
     "print": "Drucken",
     "calculateNow": "Berechnen",
     "enterDetails": "Geben Sie Ihre Reisedaten ein, um die Kosten zu berechnen.",
@@ -58,9 +90,92 @@
     "estimate": "Schätzung",
     "resetTool": "Nur die Werte dieses Tools zurücksetzen."
   },
+  "currency": {
+    "amount": "Betrag",
+    "from": "Von",
+    "to": "Nach",
+    "base": "Basiswährung",
+    "swap": "Währungen tauschen",
+    "quick": "Schnellumrechnung",
+    "lastUpdated": "Kurse aktualisiert",
+    "ratesHint": "Verwendet Referenzkurse der Europäischen Zentralbank.",
+    "retry": "Erneut versuchen",
+    "setAsMyCurrency": "Als meine Währung festlegen",
+    "disclaimer": "Kurse schwanken und Banken oder Kartenanbieter können einen Aufschlag berechnen. Umgerechnete Beträge sind Schätzungen.",
+    "empty": "Geben Sie einen Betrag ein und wählen Sie zwei Währungen, um das Ergebnis zu sehen."
+  },
+  "multi": {
+    "title": "Ein Betrag, viele Währungen",
+    "tableTitle": "Umrechnungstabelle",
+    "currency": "Währung",
+    "amount": "Betrag",
+    "rate": "Kurs",
+    "empty": "Geben Sie einen Betrag und eine Basiswährung ein, um ihn in viele Währungen umzurechnen."
+  },
+  "packing": {
+    "intro": "Erstellen Sie eine persönliche, regelbasierte Packliste für Ihre Reise.",
+    "destination": "Reiseziel",
+    "destinationPlaceholder": "z. B. Lissabon",
+    "duration": "Reisedauer",
+    "month": "Reisemonat",
+    "tripType": "Reiseart",
+    "generate": "Packliste erstellen",
+    "addCustom": "Eigenen Artikel hinzufügen",
+    "item": "Artikel",
+    "itemPlaceholder": "z. B. Reisekissen",
+    "category": "Kategorie",
+    "addItem": "Hinzufügen",
+    "listTitle": "Packliste",
+    "myTrip": "Meine Reise",
+    "printList": "Liste drucken",
+    "packed": "gepackt",
+    "empty": "Noch keine Artikel. Passen Sie die Reisedaten an und erstellen Sie eine Liste.",
+    "emptyState": "Wählen Sie Ihre Reisedaten und erstellen Sie eine Packliste. Die Liste basiert auf festen Regeln und ist stets vorhersehbar."
+  },
+  "timezone": {
+    "convertTitle": "Datum und Uhrzeit umrechnen",
+    "dstNote": "Die Sommerzeit wird automatisch über die IANA-Zeitzonendatenbank berücksichtigt.",
+    "date": "Datum",
+    "time": "Uhrzeit",
+    "fromZone": "Von Zeitzone",
+    "toZone": "Nach Zeitzone",
+    "converted": "Umgerechnet",
+    "dateChange": "Das Kalenderdatum ändert sich in der Zielzeitzone",
+    "empty": "Geben Sie Datum, Uhrzeit und beide Zeitzonen ein, um die umgerechnete Zeit zu sehen."
+  },
+  "countdown": {
+    "details": "Reisedetails",
+    "name": "Reisename",
+    "namePlaceholder": "z. B. Sommer in Italien",
+    "date": "Reisedatum",
+    "time": "Reisezeit",
+    "save": "Reise speichern",
+    "saved": "Gespeichert",
+    "localNote": "Der Countdown verwendet die lokale Zeitzone Ihres Geräts.",
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "seconds": "Sekunden",
+    "started": "Ihre Reise hat begonnen",
+    "startsIn": "Ihre Reise beginnt in",
+    "empty": "Wählen Sie ein Datum, um den Countdown zu starten."
+  },
+  "checklist": {
+    "title": "Checkliste vor der Reise",
+    "intro": "Bleiben Sie von der Buchung bis zum Boarding organisiert. Haken Sie Aufgaben ab.",
+    "complete": "erledigt",
+    "addCustom": "Eigene Aufgabe hinzufügen",
+    "task": "Aufgabe",
+    "taskPlaceholder": "z. B. Parkplatz am Flughafen buchen",
+    "add": "Aufgabe hinzufügen",
+    "myTasks": "Meine Aufgaben",
+    "saved": "Ihre Checkliste wird in diesem Browser gespeichert."
+  },
   "units": {
     "metric": "Metrisch",
     "imperial": "Imperial",
+    "metricShort": "Metrisch",
+    "imperialShort": "Imperial",
     "unitSystem": "Einheitensystem"
   },
   "footer": {
@@ -73,6 +188,7 @@
     "terms": "AGB",
     "cookies": "Cookie-Richtlinie",
     "rights": "Alle Rechte vorbehalten.",
+    "noAccount": "Kein Konto erforderlich",
     "disclaimer": "Travel Utility bietet Schätzungen und allgemeine Informationen, keine professionelle, rechtliche oder medizinische Beratung."
   },
   "cookies": {
@@ -93,6 +209,7 @@
     "english": "Englisch",
     "language": "Sprache",
     "currency": "Währung",
+    "settings": "Einstellungen",
     "yes": "Ja",
     "no": "Nein"
   }

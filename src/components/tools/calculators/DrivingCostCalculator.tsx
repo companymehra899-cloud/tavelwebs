@@ -62,7 +62,7 @@ export function DrivingCostCalculator() {
     : "";
 
   return (
-    <div className="space-y-5">
+    <div className="calc-workspace">
       <CalculatorCard>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-base font-semibold">Driving cost</h2>
@@ -87,7 +87,7 @@ export function DrivingCostCalculator() {
       {result ? (
         <ResultCard toolName="Driving Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/driving-cost-calculator?distance=${distance}&fuelPrice=${fuelPrice}`} onReset={() => reset(() => { setDistance("250"); setConsumption("6.5"); setFuelPrice("1.75"); setWearPerKm("0.05"); })} />
       ) : (
-        <p className="rounded-xl border border-dashed border-border bg-white p-4 text-sm text-muted">Enter distance, fuel consumption and fuel price to estimate your driving cost.</p>
+        <p className="calc-empty">Enter distance, fuel consumption and fuel price to estimate your driving cost.</p>
       )}
     </div>
   );
