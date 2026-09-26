@@ -106,6 +106,13 @@ a {
   border-radius: 6px;
 }
 
+/* The command palette input already lives inside a bordered dialog, so the
+   global focus ring would draw an unnecessary second box. The dialog itself
+   highlights on focus-within instead. */
+.search-input:focus-visible {
+  outline: none;
+}
+
 /* Layout helpers */
 .page-shell {
   width: min(1200px, calc(100% - 2rem));

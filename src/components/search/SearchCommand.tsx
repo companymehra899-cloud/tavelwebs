@@ -91,7 +91,7 @@ export function SearchCommand() {
         role="dialog"
         aria-modal="true"
         aria-label="Search Travel Utility"
-        className="animate-rise relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_40px_100px_rgba(5,15,32,0.4)]"
+        className="animate-rise relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_40px_100px_rgba(5,15,32,0.4)] transition-colors focus-within:border-accent"
       >
         <div className="flex items-center gap-3 border-b border-border px-4">
           <Icon name="search" size={20} className="text-muted" />
@@ -105,7 +105,7 @@ export function SearchCommand() {
             }}
             placeholder={t("search.placeholder")}
             aria-label={t("search.placeholder")}
-            className="min-h-14 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-muted"
+            className="search-input min-h-14 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-muted"
           />
           <kbd className="hidden rounded-md border border-border bg-surface-muted px-1.5 py-0.5 text-[0.65rem] font-medium text-muted sm:block">
             ESC
