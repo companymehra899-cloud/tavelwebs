@@ -5,12 +5,31 @@ import { Button } from "@/components/ui/Button";
 import { FieldGrid, CalculatorCard } from "@/components/tools/CalculatorCard";
 import { TextField } from "@/components/ui/Field";
 import { ResultCard } from "@/components/tools/ResultCard";
+import { RouteMap, type RouteMapPoint } from "@/components/tools/RouteMap";
 import { UnitToggle } from "@/components/tools/UnitToggle";
 import { useCalculation } from "@/components/tools/useCalculation";
 import { calculateRoadTrip } from "@/lib/calculators/roadTrip";
 import { formatCurrency, formatDistance, formatNumber, formatVolume, parseNumberInputSafe } from "@/lib/calculator-utils";
 import { usePreferences } from "@/components/providers/PreferencesProvider";
 import type { FuelType, ResultRow, TripDirection } from "@/lib/types";
+
+interface RouteMapState {
+  origin: RouteMapPoint;
+  destination: RouteMapPoint;
+  geometry: [number, number][];
+}
+
+function formatDrivingTime(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  if (hours === 0) {
+    return `${mins} min`;
+  }
+  if (mins === 0) {
+    return `${hours} h`;
+  }
+  return `${hours} h ${mins} min`;
+}
 
 export function RoadTripCalculator() {
   const { units, currency, t } = usePreferences();
@@ -28,6 +47,7 @@ export function RoadTripCalculator() {
   const [other, setOther] = useState("0");
   const [distanceNote, setDistanceNote] = useState<string | null>(null);
   const [loadingDistance, setLoadingDistance] = useState(false);
+  const [routeMap, setRouteMap] = useState<RouteMapState | null>(null);
   const { run, reset, result, error } = useCalculation<ReturnType<typeof calculateRoadTrip>>("Road Trip Cost");
 
   async function estimateDistance() {
@@ -44,10 +64,33 @@ export function RoadTripCalculator() {
       if (!response.ok) {
         throw new Error("unavailable");
       }
-      const data = (await response.json()) as { distanceKm: number; detourApplied: boolean };
+      const data = (await response.json()) as {
+        distanceKm: number;
+        durationMinutes: number | null;
+        origin: string;
+        destination: string;
+        originCoords?: { lat: number; lon: number };
+        destinationCoords?: { lat: number; lon: number };
+        geometry?: [number, number][];
+        routing?: "osrm" | "estimate";
+      };
       setDistance(String(data.distanceKm));
+      if (data.originCoords && data.destinationCoords && data.geometry) {
+        setRouteMap({
+          origin: { ...data.originCoords, label: data.origin },
+          destination: { ...data.destinationCoords, label: data.destination },
+          geometry: data.geometry,
+        });
+      } else {
+        setRouteMap(null);
+      }
+      const durationNote = data.durationMinutes
+        ? ` About ${formatDrivingTime(data.durationMinutes)} of driving.`
+        : "";
+      const sourceLabel =
+        data.routing === "osrm" ? "Live road route" : "Estimated road distance";
       setDistanceNote(
-        `Estimated road distance ${formatNumber(data.distanceKm, { maximumFractionDigits: 1 })} km. Adjust it if you know the exact route.`,
+        `${sourceLabel}: ${formatNumber(data.distanceKm, { maximumFractionDigits: 1 })} km.${durationNote} Adjust it if you know the exact route.`,
       );
     } catch {
       setDistanceNote("Live data is temporarily unavailable. Enter the distance manually.");
@@ -117,11 +160,21 @@ export function RoadTripCalculator() {
             <TextField id="origin" label="Starting location" value={origin} onChange={setOrigin} placeholder="e.g. Berlin" autoComplete="off" />
             <TextField id="destination" label="Destination" value={destination} onChange={setDestination} placeholder="e.g. Rome" autoComplete="off" />
           </FieldGrid>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button variant="secondary" onClick={estimateDistance} disabled={loadingDistance}>
-              {loadingDistance ? t("calculator.loading") : "Estimate distance"}
-            </Button>
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <Button variant="secondary" onClick={estimateDistance} disabled={loadingDistance}>
+                {loadingDistance ? t("calculator.loading") : "Estimate distance"}
+              </Button>
+            </div>
             {distanceNote ? <p className="text-xs text-muted">{distanceNote}</p> : null}
+            {routeMap ? (
+              <RouteMap
+                origin={routeMap.origin}
+                destination={routeMap.destination}
+                geometry={routeMap.geometry}
+                height="18rem"
+              />
+            ) : null}
           </div>
           <FieldGrid>
             <TextField id="rt-distance" label={`Distance (${units === "imperial" ? "miles" : "km"})`} value={distance} onChange={setDistance} type="number" inputMode="decimal" min="0" step="any" error={error ? undefined : undefined} />
@@ -161,7 +214,7 @@ export function RoadTripCalculator() {
           ) : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setOrigin(""); setDestination(""); setDistance("500"); setConsumption("6.5"); setFuelPrice("1.75"); setTravelers("2"); setTolls("0"); setParking("0"); setAccommodation("0"); setOther("0"); setDistanceNote(null); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setOrigin(""); setDestination(""); setDistance("500"); setConsumption("6.5"); setFuelPrice("1.75"); setTravelers("2"); setTolls("0"); setParking("0"); setAccommodation("0"); setOther("0"); setDistanceNote(null); setRouteMap(null); })}>
               {t("calculator.reset")}
             </Button>
           </div>

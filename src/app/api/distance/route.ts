@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { estimateDistance } from "@/services/distance";
+import { fetchRoute } from "@/services/distance";
 
 export const revalidate = 3600;
 
@@ -9,24 +9,35 @@ export async function GET(request: Request) {
   const destination = searchParams.get("destination")?.trim();
 
   if (!origin || !destination) {
-    return NextResponse.json({ error: "Both origin and destination are required." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Both origin and destination are required." },
+      { status: 400 },
+    );
   }
 
   try {
-    const result = await estimateDistance(origin, destination);
-    if (!result) {
+    const route = await fetchRoute(origin, destination);
+    if (!route) {
       return NextResponse.json(
         { error: "We could not find one of those places. Enter the distance manually." },
         { status: 404 },
       );
     }
     return NextResponse.json({
-      distanceKm: result.distanceKm,
-      origin: result.originLabel,
-      destination: result.destinationLabel,
-      detourApplied: true,
+      distanceKm: route.distanceKm,
+      durationMinutes: route.durationMinutes,
+      origin: route.originLabel,
+      destination: route.destinationLabel,
+      originCoords: route.origin,
+      destinationCoords: route.destination,
+      geometry: route.geometry,
+      source: route.source,
+      routing: route.source === "osrm" ? "osrm" : "estimate",
     });
   } catch {
-    return NextResponse.json({ error: "Live data is temporarily unavailable." }, { status: 503 });
+    return NextResponse.json(
+      { error: "Live data is temporarily unavailable." },
+      { status: 503 },
+    );
   }
 }
