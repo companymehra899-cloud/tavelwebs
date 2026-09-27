@@ -56,7 +56,10 @@
     "recentlyUsed": "Recent gebruikt",
     "noRecent": "Tools die je opent verschijnen hier.",
     "favorites": "Favorieten",
-    "noFavorites": "Nog geen favoriete tools."
+    "noFavorites": "Nog geen favoriete tools.",
+    "faqEyebrow": "Hulp en antwoorden",
+    "faqTitle": "Veelgestelde vragen",
+    "faqSubtitle": "Snelle antwoorden op de vragen die reizigers het vaakst stellen over onze gratis rekenmachines."
   },
   "tools": {
     "title": "Reistools",

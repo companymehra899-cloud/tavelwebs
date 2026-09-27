@@ -6,6 +6,7 @@ import { useSearch } from "@/components/search/SearchProvider";
 import { Icon, resolveIcon } from "@/components/ui/Icon";
 import { CATEGORY_PATHS } from "@/lib/constants";
 import { TOOL_MAP, type ToolMeta } from "@/lib/catalog";
+import { HOME_FAQS } from "@/lib/faq";
 
 const HERO_CHIPS = [
   "fuel-cost-calculator",
@@ -348,6 +349,35 @@ export function FavoritesSection() {
           ))}
         </ul>
       )}
+    </section>
+  );
+}
+
+export function HomeFaq() {
+  const { t } = usePreferences();
+
+  return (
+    <section aria-labelledby="home-faq-heading" className="page-shell mt-16">
+      <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          <p className="eyebrow text-accent">{t("home.faqEyebrow")}</p>
+          <h2 id="home-faq-heading" className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+            {t("home.faqTitle")}
+          </h2>
+          <p className="mt-3 max-w-md text-sm leading-7 text-muted">{t("home.faqSubtitle")}</p>
+        </div>
+        <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-sm)]">
+          {HOME_FAQS.map((faq) => (
+            <details key={faq.question} className="group">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink marker:content-none transition hover:bg-surface-muted">
+                {faq.question}
+                <Icon name="chevron-down" size={16} className="shrink-0 text-muted transition group-open:rotate-180" />
+              </summary>
+              <p className="px-5 pb-4 text-sm leading-7 text-muted">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

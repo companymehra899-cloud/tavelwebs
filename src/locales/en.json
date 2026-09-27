@@ -56,7 +56,10 @@
     "recentlyUsed": "Recently used",
     "noRecent": "Tools you open will appear here.",
     "favorites": "Favorites",
-    "noFavorites": "No favorite tools yet."
+    "noFavorites": "No favorite tools yet.",
+    "faqEyebrow": "Help & answers",
+    "faqTitle": "Frequently asked questions",
+    "faqSubtitle": "Quick answers to the questions travellers ask most about our free travel calculators."
   },
   "tools": {
     "title": "Travel Tools",

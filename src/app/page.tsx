@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { CategoryShowcase, FavoritesSection, HomeHero, PopularTools } from "@/components/home/HomeSections";
+import { CategoryShowcase, FavoritesSection, HomeFaq, HomeHero, PopularTools } from "@/components/home/HomeSections";
 import { RecentTools } from "@/components/RecentTools";
 import { Icon } from "@/components/ui/Icon";
-import { siteUrl } from "@/lib/seo";
+import { faqJsonLd, JsonLd, siteUrl } from "@/lib/seo";
+import { HOME_FAQS } from "@/lib/faq";
 
 export const metadata: Metadata = {
   title: "Travel Tools & Calculators",
@@ -26,6 +27,8 @@ const VALUES = [
 export default function HomePage() {
   return (
     <div className="pb-4">
+      <JsonLd data={faqJsonLd(HOME_FAQS)} />
+
       <HomeHero />
 
       <div className="mt-6">
@@ -58,6 +61,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <HomeFaq />
     </div>
   );
 }

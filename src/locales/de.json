@@ -56,7 +56,10 @@
     "recentlyUsed": "Zuletzt verwendet",
     "noRecent": "Tools, die Sie öffnen, erscheinen hier.",
     "favorites": "Favoriten",
-    "noFavorites": "Noch keine Favoriten."
+    "noFavorites": "Noch keine Favoriten.",
+    "faqEyebrow": "Hilfe & Antworten",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faqSubtitle": "Kurze Antworten auf die Fragen, die Reisende zu unseren kostenlosen Rechnern am häufigsten stellen."
   },
   "tools": {
     "title": "Reise-Tools",
