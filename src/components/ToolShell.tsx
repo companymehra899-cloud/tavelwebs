@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { FavoriteButton } from "@/components/tools/FavoriteButton";
 import { FAQ } from "@/components/tools/FAQ";
@@ -42,15 +41,7 @@ export function ToolShell({ tool, children }: { tool: ToolMeta; children: ReactN
       </header>
 
       <div className="mt-7 space-y-3">
-        <div className="no-print">
-          <AdSlot placement="tool-top" />
-        </div>
-
         <ToolErrorBoundary toolName={tool.title}>{children}</ToolErrorBoundary>
-
-        <div className="no-print">
-          <AdSlot placement="result-bottom" />
-        </div>
 
         <section aria-labelledby="about-heading" className="mt-4 grid gap-6 rounded-2xl border border-border bg-surface p-6 sm:p-8 lg:grid-cols-2">
           <div>
@@ -76,9 +67,6 @@ export function ToolShell({ tool, children }: { tool: ToolMeta; children: ReactN
           </div>
         </section>
 
-        <div className="no-print">
-          <AdSlot placement="content" />
-        </div>
         <FAQ faqs={tool.faqs} />
         <RelatedTools slug={tool.slug} />
         <p className="no-print text-sm text-muted">
