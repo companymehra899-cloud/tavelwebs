@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { usePreferences } from "@/components/providers/PreferencesProvider";
 import { useSearch } from "@/components/search/SearchProvider";
 import { Icon } from "@/components/ui/Icon";
-import { CATEGORIES, TOOL_MAP } from "@/lib/catalog";
+import { TOOL_MAP } from "@/lib/catalog";
 import { CURRENCIES, SUPPORTED_LOCALES, type AppLocale } from "@/lib/constants";
 import type { CurrencyCode } from "@/lib/types";
 
@@ -20,15 +20,15 @@ const NAV = [
 function UnitsMenu() {
   const { units, setUnits, t } = usePreferences();
   return (
-    <div className="flex items-center rounded-full border border-border bg-surface p-0.5" role="group" aria-label={t("units.unitSystem")}>
+    <div className="flex items-center rounded border border-white/20 bg-white/10 p-0.5" role="group" aria-label={t("units.unitSystem")}>
       {(["metric", "imperial"] as const).map((value) => (
         <button
           key={value}
           type="button"
           aria-pressed={units === value}
           onClick={() => setUnits(value)}
-          className={`min-h-8 rounded-full px-3 text-xs font-semibold transition ${
-            units === value ? "bg-brand text-white shadow-sm" : "text-muted hover:text-ink"
+          className={`min-h-8 rounded px-3 text-xs font-semibold transition ${
+            units === value ? "bg-white text-brand shadow-sm" : "text-white/75 hover:text-white"
           }`}
         >
           {value === "metric" ? t("units.metricShort") : t("units.imperialShort")}
@@ -63,7 +63,7 @@ function FavoritesMenu() {
         aria-haspopup="true"
         aria-label={t("header.favorites")}
         onClick={() => setOpen((value) => !value)}
-        className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-ink transition hover:border-border-strong hover:text-accent"
+        className="relative inline-flex h-9 w-9 items-center justify-center rounded text-white/90 transition hover:bg-white/10 hover:text-white"
       >
         <Icon name="heart" size={18} />
         {items.length > 0 ? (
@@ -73,7 +73,7 @@ function FavoritesMenu() {
         ) : null}
       </button>
       {open ? (
-        <div className="animate-fade absolute right-0 z-50 mt-2 w-72 overflow-hidden rounded-2xl border border-border bg-surface p-3 shadow-[0_24px_60px_rgba(11,27,51,0.18)]">
+        <div className="animate-fade absolute right-0 z-50 mt-2 w-72 overflow-hidden rounded border border-border bg-surface p-3 shadow-[var(--shadow)]">
           <p className="px-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">{t("header.favorites")}</p>
           {items.length === 0 ? (
             <div className="px-1 py-4">
@@ -132,12 +132,12 @@ function SettingsMenu() {
         aria-haspopup="true"
         aria-label={t("common.settings")}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-ink transition hover:border-border-strong hover:text-accent"
+        className="inline-flex h-9 w-9 items-center justify-center rounded text-white/90 transition hover:bg-white/10 hover:text-white"
       >
         <Icon name="sliders" size={18} />
       </button>
       {open ? (
-        <div className="animate-fade absolute right-0 z-50 mt-2 w-64 space-y-3 rounded-2xl border border-border bg-surface p-4 shadow-[0_24px_60px_rgba(11,27,51,0.18)]">
+        <div className="animate-fade absolute right-0 z-50 mt-2 w-64 space-y-3 rounded border border-border bg-surface p-4 shadow-[var(--shadow)]">
           <label className="block">
             <span className="mb-1.5 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
               {t("common.language")}
@@ -177,20 +177,10 @@ function SettingsMenu() {
 }
 
 export function Header() {
-  const { t, locale, setLocale, currency, setCurrency } = usePreferences();
+  const { t } = usePreferences();
   const { openSearch } = useSearch();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 8);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -205,28 +195,26 @@ export function Header() {
 
   return (
     <header
-      className={`no-print sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled ? "border-border bg-[rgba(241,245,251,0.85)] backdrop-blur-xl" : "border-transparent bg-transparent"
-      }`}
+      className="no-print sticky top-0 z-50 bg-brand text-white shadow-[0_2px_8px_rgba(8,41,82,0.25)]"
     >
-      <div className="page-shell flex items-center gap-3 py-3">
-        <Link href="/" className="flex items-center gap-2.5 text-base font-bold tracking-tight text-ink">
-          <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-white shadow-sm">
-            <Icon name="compass" size={20} />
+      <div className="page-shell flex items-center gap-3 py-2.5">
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-white">
+          <span aria-hidden="true" className="flex h-8 w-8 items-center justify-center rounded bg-accent text-white">
+            <Icon name="compass" size={18} />
           </span>
           <span className="whitespace-nowrap">{t("brand")}</span>
         </Link>
 
-        <nav aria-label="Main navigation" className="ml-4 hidden lg:block">
-          <ul className="flex items-center gap-0.5">
+        <nav aria-label="Main navigation" className="ml-3 hidden lg:block">
+          <ul className="flex items-center gap-1">
             {NAV.map((item) => {
               const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
-                      active ? "bg-accent-soft text-accent-strong" : "text-muted hover:bg-surface hover:text-ink"
+                    className={`rounded px-3 py-1.5 text-sm font-medium transition ${
+                      active ? "bg-white/15 text-white" : "text-white/80 hover:bg-white/10 hover:text-white"
                     }`}
                   >
                     {t(item.labelKey)}
@@ -237,16 +225,16 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1.5">
           <button
             type="button"
             onClick={openSearch}
             aria-label={t("header.searchPlaceholder")}
-            className="relative inline-flex h-10 items-center gap-2 rounded-full border border-border bg-surface px-3 text-sm text-muted transition hover:border-border-strong hover:text-ink sm:pr-14"
+            className="relative inline-flex h-9 items-center gap-2 rounded border border-white/20 bg-white/10 px-3 text-sm text-white/80 transition hover:bg-white/15 hover:text-white sm:pr-12"
           >
-            <Icon name="search" size={18} />
+            <Icon name="search" size={16} />
             <span className="hidden sm:inline">{t("header.searchShort")}</span>
-            <kbd className="absolute right-3 hidden rounded border border-border bg-surface-muted px-1.5 py-0.5 text-[0.6rem] font-semibold text-muted sm:block">
+            <kbd className="absolute right-2 hidden rounded border border-white/20 bg-white/10 px-1.5 py-0.5 text-[0.6rem] font-semibold text-white/70 sm:block">
               ⌘K
             </kbd>
           </button>
@@ -257,7 +245,7 @@ export function Header() {
           <SettingsMenu />
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-ink lg:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded text-white lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? t("header.closeMenu") : t("header.menu")}
@@ -269,61 +257,19 @@ export function Header() {
       </div>
 
       {menuOpen ? (
-        <nav id="mobile-menu" aria-label="Mobile navigation" className="animate-fade border-t border-border bg-surface/95 backdrop-blur-xl lg:hidden">
+        <nav id="mobile-menu" aria-label="Mobile navigation" className="animate-fade border-t border-white/15 bg-brand-strong lg:hidden">
           <div className="page-shell flex flex-col py-3">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium text-ink hover:bg-brand-soft"
+                className="flex items-center justify-between rounded px-3 py-3 text-sm font-medium text-white hover:bg-white/10"
               >
                 {t(item.labelKey)}
-                <Icon name="arrow-right" size={15} className="text-muted" />
+                <Icon name="arrow-right" size={15} className="text-white/60" />
               </Link>
             ))}
-            <div className="mt-2 flex items-center justify-between rounded-xl bg-surface-muted px-3 py-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">{t("units.unitSystem")}</span>
-              <UnitsMenu />
-            </div>
-            <div className="mt-2 grid grid-cols-2 gap-2 px-3">
-              <select
-                aria-label={t("common.language")}
-                value={locale}
-                onChange={(event) => setLocale(event.target.value as AppLocale)}
-                className="min-h-10 rounded-xl border border-border bg-surface px-3 text-sm text-ink"
-              >
-                {SUPPORTED_LOCALES.map((code) => (
-                  <option key={code} value={code}>
-                    {t(`languages.${code}`)}
-                  </option>
-                ))}
-              </select>
-              <select
-                aria-label={t("common.currency")}
-                value={currency}
-                onChange={(event) => setCurrency(event.target.value as CurrencyCode)}
-                className="min-h-10 rounded-xl border border-border bg-surface px-3 text-sm text-ink"
-              >
-                {CURRENCIES.map((item) => (
-                  <option key={item.code} value={item.code}>
-                    {item.code}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mt-2 grid grid-cols-2 gap-2 px-3 pb-2">
-              {CATEGORIES.slice(0, 4).map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={`/tools?category=${cat.id}`}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-xl border border-border bg-surface px-3 py-2 text-xs font-medium text-muted hover:text-ink"
-                >
-                  {cat.label}
-                </Link>
-              ))}
-            </div>
           </div>
         </nav>
       ) : null}

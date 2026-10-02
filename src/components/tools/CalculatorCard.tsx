@@ -5,9 +5,9 @@ export function CalculatorCard({ children, id }: { children: ReactNode; id?: str
     <section
       id={id}
       aria-label="Calculator"
-      className="print-block relative overflow-hidden rounded-2xl border border-border bg-surface p-5 shadow-[var(--shadow)] sm:p-7"
+      className="print-block relative overflow-hidden rounded border border-border bg-surface p-5 shadow-[var(--shadow)] sm:p-7"
     >
-      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--accent),var(--cyan),transparent)]" />
+      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--accent),var(--cyan),var(--gold))]" />
       {children}
     </section>
   );

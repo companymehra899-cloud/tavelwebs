@@ -116,8 +116,8 @@ export function TripCountdown() {
       </CalculatorCard>
 
       {remaining && date ? (
-        <section aria-live="polite" className="print-block animate-rise overflow-hidden rounded-2xl border border-brand-strong/30 bg-[linear-gradient(150deg,#0b1b33_0%,#12315a_100%)] p-6 text-white shadow-[var(--shadow)] lg:sticky lg:top-24">
-          <p className="eyebrow text-sky-300">
+        <section aria-live="polite" className="print-block animate-rise overflow-hidden rounded-[1.6rem] border border-brand-strong/30 bg-[linear-gradient(150deg,#0b2a27_0%,#123c38_100%)] p-6 text-white shadow-[var(--shadow)] lg:sticky lg:top-24">
+          <p className="eyebrow text-amber-200">
             {remaining.past ? t("countdown.started") : t("countdown.startsIn")}
           </p>
           <h2 className="mt-2 truncate text-2xl font-bold">{name}</h2>
@@ -125,11 +125,11 @@ export function TripCountdown() {
             {units.map((unit) => (
               <div key={unit.label} className="rounded-2xl border border-white/10 bg-white/[0.07] p-4 text-center backdrop-blur">
                 <p className="text-3xl font-bold tabular-nums sm:text-4xl">{String(unit.value).padStart(2, "0")}</p>
-                <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-200/80">{unit.label}</p>
+                <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-teal-100/80">{unit.label}</p>
               </div>
             ))}
           </div>
-          <p className="mt-5 text-xs text-sky-200/70">
+          <p className="mt-5 text-xs text-teal-100/70">
             {date} · {time}
           </p>
         </section>

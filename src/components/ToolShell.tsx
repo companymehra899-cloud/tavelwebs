@@ -28,7 +28,7 @@ export function ToolShell({ tool, children }: { tool: ToolMeta; children: ReactN
 
       <header className="mt-5 flex flex-wrap items-start justify-between gap-5">
         <div className="flex items-start gap-4">
-          <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand text-white sm:flex">
+          <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded bg-brand text-white sm:flex">
             <Icon name={resolveIcon(tool.icon)} size={24} />
           </span>
           <div>
@@ -43,7 +43,7 @@ export function ToolShell({ tool, children }: { tool: ToolMeta; children: ReactN
       <div className="mt-7 space-y-3">
         <ToolErrorBoundary toolName={tool.title}>{children}</ToolErrorBoundary>
 
-        <section aria-labelledby="about-heading" className="mt-4 grid gap-6 rounded-2xl border border-border bg-surface p-6 sm:p-8 lg:grid-cols-2">
+        <section aria-labelledby="about-heading" className="mt-4 grid gap-6 rounded border border-border bg-surface p-6 sm:p-8 lg:grid-cols-2">
           <div>
             <h2 id="about-heading" className="flex items-center gap-2 text-lg font-bold tracking-tight text-ink">
               <Icon name="info" size={18} className="text-accent" />

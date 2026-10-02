@@ -40,17 +40,17 @@ export default function HomePage() {
       </div>
 
       <section className="page-shell mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-surface p-6">
+        <div className="rounded border border-border bg-surface p-5 shadow-[var(--shadow-sm)]">
           <RecentTools />
         </div>
         <FavoritesSection />
       </section>
 
       <section className="page-shell mt-16">
-        <div className="grid gap-4 rounded-[1.75rem] border border-border bg-surface p-6 sm:grid-cols-3 sm:p-8">
+        <div className="grid gap-4 rounded border border-border bg-surface p-5 shadow-[var(--shadow-sm)] sm:grid-cols-3 sm:p-7">
           {VALUES.map((value) => (
             <div key={value.title} className="flex items-start gap-3.5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-strong">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded bg-accent-soft text-accent-strong">
                 <Icon name={value.icon} size={20} />
               </span>
               <div>

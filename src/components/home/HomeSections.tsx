@@ -17,12 +17,12 @@ const HERO_CHIPS = [
 ];
 
 const POPULAR_ACCENTS = [
-  "border-sky-200 bg-sky-50 text-sky-700",
-  "border-cyan-200 bg-cyan-50 text-cyan-700",
-  "border-indigo-200 bg-indigo-50 text-indigo-700",
-  "border-emerald-200 bg-emerald-50 text-emerald-700",
+  "border-teal-200 bg-teal-50 text-teal-700",
   "border-amber-200 bg-amber-50 text-amber-700",
-  "border-violet-200 bg-violet-50 text-violet-700",
+  "border-cyan-200 bg-cyan-50 text-cyan-700",
+  "border-emerald-200 bg-emerald-50 text-emerald-700",
+  "border-orange-200 bg-orange-50 text-orange-700",
+  "border-lime-200 bg-lime-50 text-lime-800",
 ];
 
 export function HomeHero() {
@@ -30,108 +30,55 @@ export function HomeHero() {
   const { openSearch } = useSearch();
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="page-shell grid items-center gap-12 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-        <div className="animate-rise">
-          <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent-soft px-3 py-1.5 text-accent-strong">
-            <Icon name="sparkle" size={13} />
-            {t("home.heroBadge")}
-          </span>
-          <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-            {t("home.heroTitle")}
-            <span className="mt-1 block text-accent">{t("home.heroTitleAccent")}</span>
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#0c3c78_0%,#0a5a9c_55%,#eef2f6_100%)]">
+      <div className="page-shell py-10 sm:py-14">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">{t("home.heroBadge")}</p>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            {t("home.heroTitle")} {t("home.heroTitleAccent")}
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-7 text-muted">{t("home.heroSubtitle")}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">{t("home.heroSubtitle")}</p>
+        </div>
 
-          <button
-            type="button"
-            onClick={openSearch}
-            className="group mt-8 flex w-full max-w-xl items-center gap-3 rounded-2xl border border-border bg-surface px-4 py-3.5 text-left shadow-[var(--shadow)] transition hover:border-accent/40"
-          >
-            <Icon name="search" size={20} className="text-muted" />
-            <span className="flex-1 text-sm text-muted sm:text-base">{t("home.searchPlaceholder")}</span>
-            <span className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-accent px-3.5 text-xs font-semibold text-white transition group-hover:bg-accent-strong">
+        <div className="mx-auto mt-8 max-w-3xl rounded bg-white p-5 shadow-[0_16px_40px_rgba(8,41,82,0.22)] sm:p-7">
+          <button type="button" onClick={openSearch} className="grid w-full gap-3 text-left sm:grid-cols-[1fr_auto_1fr_auto] sm:items-end">
+            <span className="block">
+              <span className="mb-1.5 block text-xs font-bold uppercase tracking-[0.14em] text-brand">From</span>
+              <span className="flex min-h-12 items-center gap-2 rounded border border-border bg-surface-muted px-3 text-sm text-muted">
+                <Icon name="route" size={16} className="text-accent" />
+                {t("home.searchPlaceholder")}
+              </span>
+            </span>
+            <span className="hidden h-12 w-12 items-center justify-center rounded bg-brand-soft text-brand sm:flex">
+              <Icon name="arrow-right" size={18} />
+            </span>
+            <span className="block">
+              <span className="mb-1.5 block text-xs font-bold uppercase tracking-[0.14em] text-brand">To</span>
+              <span className="flex min-h-12 items-center gap-2 rounded border border-border bg-surface-muted px-3 text-sm text-muted">
+                <Icon name="globe" size={16} className="text-accent" />
+                {t("home.searchPlaceholder")}
+              </span>
+            </span>
+            <span className="inline-flex min-h-12 items-center justify-center rounded bg-accent px-6 text-sm font-bold text-white hover:bg-accent-strong">
               {t("home.searchButton")}
-              <Icon name="arrow-right" size={14} />
             </span>
           </button>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">{t("home.popularLabel")}</span>
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-4">
+            <span className="text-xs font-bold uppercase tracking-[0.14em] text-muted">{t("home.popularLabel")}</span>
             {HERO_CHIPS.map((slug) => {
               const tool = TOOL_MAP[slug];
               if (!tool) return null;
               return (
-                <Link
-                  key={slug}
-                  href={`/tools/${slug}`}
-                  className="rounded-full border border-border bg-surface/70 px-3 py-1.5 text-xs font-medium text-muted transition hover:border-accent/40 hover:text-accent-strong"
-                >
+                <Link key={slug} href={`/tools/${slug}`} className="text-sm font-medium text-accent hover:underline">
                   {tool.shortTitle}
                 </Link>
               );
             })}
           </div>
         </div>
-
-        <HeroVisual />
       </div>
     </section>
-  );
-}
-
-function HeroVisual() {
-  return (
-    <div className="animate-rise relative mx-auto hidden w-full max-w-xl lg:block">
-      <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[2rem] border border-brand-strong/40 bg-[linear-gradient(150deg,#0b1b33_0%,#12294a_55%,#0e3556_100%)] shadow-[0_40px_90px_rgba(5,15,32,0.35)]">
-        <svg viewBox="0 0 400 320" className="absolute inset-0 h-full w-full" aria-hidden="true">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M40 0H0V40" fill="none" stroke="rgba(125,211,252,0.10)" strokeWidth="1" />
-            </pattern>
-            <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#22d3ee" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="320" fill="url(#grid)" />
-          <path
-            d="M52 250 C 120 210, 130 130, 205 118 S 320 96, 352 58"
-            fill="none"
-            stroke="rgba(56,189,248,0.25)"
-            strokeWidth="10"
-            strokeLinecap="round"
-          />
-          <path
-            d="M52 250 C 120 210, 130 130, 205 118 S 320 96, 352 58"
-            fill="none"
-            stroke="url(#route)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeDasharray="7 7"
-          />
-          <circle cx="52" cy="250" r="7" fill="#0b1b33" stroke="#38bdf8" strokeWidth="3" />
-          <circle cx="352" cy="58" r="7" fill="#0b1b33" stroke="#22d3ee" strokeWidth="3" />
-        </svg>
-
-        <div className="absolute left-4 top-4 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 backdrop-blur">
-          <Icon name="route" size={16} className="text-sky-300" />
-          <span className="text-xs font-semibold text-white/90">Paris → Milan</span>
-        </div>
-
-        <div className="absolute bottom-5 left-5 rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 backdrop-blur">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-200/80">Distance</p>
-          <p className="mt-1 text-2xl font-bold text-white">1,245 km</p>
-        </div>
-        <div className="absolute bottom-16 right-5 rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 backdrop-blur">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-200/80">Trip cost</p>
-          <p className="mt-1 text-2xl font-bold text-white">€198.10</p>
-        </div>
-        <div className="absolute right-6 top-24 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.07] text-cyan-300 backdrop-blur">
-          <Icon name="suitcase" size={22} />
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -140,7 +87,7 @@ function PopularCard({ tool, index }: { tool: ToolMeta; index: number }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="hover-lift group flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-[var(--shadow-sm)]"
+      className="hover-lift group flex h-full items-start gap-4 rounded border border-border bg-surface p-4 shadow-[var(--shadow-sm)]"
     >
       <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${accent}`}>
         <Icon name={resolveIcon(tool.icon)} size={20} />
@@ -230,7 +177,7 @@ const SECTIONS: {
 ];
 
 const ACCENT_CLASSES: Record<string, { icon: string; wash: string; text: string }> = {
-  sky: { icon: "bg-sky-50 text-sky-600 border-sky-200", wash: "from-sky-100/70", text: "text-sky-700" },
+  sky: { icon: "bg-teal-50 text-teal-600 border-teal-200", wash: "from-teal-100/70", text: "text-teal-700" },
   indigo: { icon: "bg-indigo-50 text-indigo-600 border-indigo-200", wash: "from-indigo-100/70", text: "text-indigo-700" },
   cyan: { icon: "bg-cyan-50 text-cyan-600 border-cyan-200", wash: "from-cyan-100/70", text: "text-cyan-700" },
   emerald: { icon: "bg-emerald-50 text-emerald-600 border-emerald-200", wash: "from-emerald-100/70", text: "text-emerald-700" },
@@ -242,7 +189,7 @@ function FeaturedToolCard({ tool, accent }: { tool: ToolMeta; accent: string }) 
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="hover-lift group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-surface p-6 shadow-[var(--shadow)]"
+      className="hover-lift group relative flex h-full flex-col overflow-hidden rounded border border-border bg-surface p-5 shadow-[var(--shadow-sm)]"
     >
       <div className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${colors.wash} to-transparent blur-2xl`} />
       <span className={`relative flex h-12 w-12 items-center justify-center rounded-2xl border ${colors.icon}`}>
@@ -263,7 +210,7 @@ function SideToolCard({ tool }: { tool: ToolMeta }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="hover-lift group flex items-center gap-3.5 rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-sm)]"
+      className="hover-lift group flex items-center gap-3.5 rounded border border-border bg-surface p-4 shadow-[var(--shadow-sm)]"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
         <Icon name={resolveIcon(tool.icon)} size={18} />
@@ -321,7 +268,7 @@ export function FavoritesSection() {
   const items = favorites.map((slug) => TOOL_MAP[slug]).filter(Boolean) as ToolMeta[];
 
   return (
-    <section aria-labelledby="favorites-heading" className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6">
+    <section aria-labelledby="favorites-heading" className="flex h-full flex-col rounded border border-border bg-surface p-5 shadow-[var(--shadow-sm)]">
       <h2 id="favorites-heading" className="flex items-center gap-2 text-base font-semibold text-ink">
         <Icon name="heart" size={17} className="text-accent" />
         {t("home.favorites")}
@@ -366,7 +313,7 @@ export function HomeFaq() {
           </h2>
           <p className="mt-3 max-w-md text-sm leading-7 text-muted">{t("home.faqSubtitle")}</p>
         </div>
-        <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-sm)]">
+        <div className="divide-y divide-border overflow-hidden rounded border border-border bg-surface shadow-[var(--shadow-sm)]">
           {HOME_FAQS.map((faq) => (
             <details key={faq.question} className="group">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink marker:content-none transition hover:bg-surface-muted">

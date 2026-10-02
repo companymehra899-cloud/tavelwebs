@@ -122,7 +122,7 @@ export function RouteMap({ origin, destination, geometry, height = "20rem" }: Ro
           }),
         );
         map.addLayer(
-          L.polyline(points, { color: "#0284c7", weight: 4, opacity: 0.85 }),
+          L.polyline(points, { color: "#0f766e", weight: 4, opacity: 0.85 }),
         );
         map.addLayer(
           L.circleMarker([origin.lat, origin.lon], {
@@ -138,7 +138,7 @@ export function RouteMap({ origin, destination, geometry, height = "20rem" }: Ro
             radius: 7,
             color: "#ffffff",
             weight: 2,
-            fillColor: "#0284c7",
+            fillColor: "#0f766e",
             fillOpacity: 1,
           }).bindTooltip(destination.label ?? "Destination"),
         );

@@ -55,20 +55,20 @@ export function ResultCard({ toolName, title, rows, summary, sharePath, onReset,
     <section
       aria-label="Result"
       aria-live="polite"
-      className="print-block animate-rise overflow-hidden rounded-2xl border border-accent/20 bg-surface shadow-[var(--shadow)] lg:sticky lg:top-24"
+      className="print-block animate-rise overflow-hidden rounded border border-accent/20 bg-surface shadow-[var(--shadow)] lg:sticky lg:top-24"
     >
-      <div className="bg-[linear-gradient(160deg,#0b1b33_0%,#12315a_100%)] p-6 text-white">
-        <div className="flex items-center gap-2 text-sky-200/90">
+      <div className="bg-[linear-gradient(160deg,#082952_0%,#0c3c78_55%,#0c6ebd_100%)] p-6 text-white">
+        <div className="flex items-center gap-2 text-sky-100/90">
           <Icon name={icon} size={16} />
           <h2 className="text-[0.68rem] font-semibold uppercase tracking-[0.18em]">{title}</h2>
         </div>
         <p className="mt-4 text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">{hero?.value}</p>
-        {hero ? <p className="mt-1.5 text-sm text-sky-200/80">{hero.label}</p> : null}
+        {hero ? <p className="mt-1.5 text-sm text-sky-100/80">{hero.label}</p> : null}
         {perPerson.map((row) => (
           <p key={row.label} className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-white">
-            <Icon name="users" size={14} className="text-sky-300" />
+            <Icon name="users" size={14} className="text-amber-200" />
             {row.value}
-            <span className="font-normal text-sky-200/80">{row.label}</span>
+            <span className="font-normal text-sky-100/80">{row.label}</span>
           </p>
         ))}
       </div>

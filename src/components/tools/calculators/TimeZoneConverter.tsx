@@ -85,21 +85,21 @@ export function TimeZoneConverter() {
       <div className="space-y-4">
         {result ? (
           <>
-            <div className="print-block animate-rise overflow-hidden rounded-2xl border border-brand-strong/30 bg-[linear-gradient(150deg,#0b1b33_0%,#12315a_100%)] p-5 text-white shadow-[var(--shadow)]">
+            <div className="print-block animate-rise overflow-hidden rounded-[1.5rem] border border-brand-strong/30 bg-[linear-gradient(150deg,#0b2a27_0%,#123c38_100%)] p-5 text-white shadow-[var(--shadow)]">
               <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
                 <div>
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-200/80">{cityName(from)}</p>
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-teal-100/80">{cityName(from)}</p>
                   <p className="mt-1 text-3xl font-bold tabular-nums">{time}</p>
-                  <p className="mt-1 text-xs text-sky-200/70">{date}</p>
+                  <p className="mt-1 text-xs text-teal-100/70">{date}</p>
                 </div>
-                <div className="flex flex-col items-center text-sky-300">
+                <div className="flex flex-col items-center text-amber-200">
                   <Icon name="arrow-right" size={20} />
                   <span className="mt-1 text-[0.6rem] uppercase tracking-wide">{result.fromOffset} → {result.toOffset}</span>
                 </div>
                 <div className="text-right">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-200/80">{cityName(to)}</p>
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-teal-100/80">{cityName(to)}</p>
                   <p className="mt-1 text-3xl font-bold tabular-nums">{result.convertedTime}</p>
-                  <p className="mt-1 text-xs text-sky-200/70">{result.convertedDate}</p>
+                  <p className="mt-1 text-xs text-teal-100/70">{result.convertedDate}</p>
                 </div>
               </div>
               {dateChanged ? (
