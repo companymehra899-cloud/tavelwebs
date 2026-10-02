@@ -60,12 +60,12 @@ export function TripDurationCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setStartDate(today); setEndDate(today); setInclusive(true); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setStartDate(""); setEndDate(""); setInclusive(true); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Trip Duration" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/trip-duration-calculator" onReset={() => reset(() => {})} />
+        <ResultCard toolName="Trip Duration" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/trip-duration-calculator" onReset={() => reset(() => { setStartDate(""); setEndDate(""); setInclusive(true); })} />
       ) : (
         <p className="calc-empty">Pick a start and end date to see the trip length in days, nights and weeks.</p>
       )}

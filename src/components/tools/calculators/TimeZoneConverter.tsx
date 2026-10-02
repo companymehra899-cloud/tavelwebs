@@ -75,7 +75,7 @@ export function TimeZoneConverter() {
               <Icon name="calculator" size={15} />
               {t("calculator.calculate")}
             </Button>
-            <Button variant="ghost" onClick={() => reset(() => { setDate(today()); setTime("09:00"); setFrom("Europe/London"); setTo("America/New_York"); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setDate(""); setTime(""); })}>
               {t("calculator.reset")}
             </Button>
           </div>
@@ -115,7 +115,7 @@ export function TimeZoneConverter() {
               rows={rows}
               summary={summary}
               sharePath={`/tools/time-zone-converter?from=${from}&to=${to}`}
-              onReset={() => reset(() => {})}
+              onReset={() => reset(() => { setDate(""); setTime(""); })}
               icon="clock"
             />
           </>

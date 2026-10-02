@@ -64,12 +64,12 @@ export function TravelMoneyCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setTripDays("10"); setDailyBudget("80"); setBuffer("15"); setTravelers("2"); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setTripDays(""); setDailyBudget(""); setBuffer(""); setTravelers(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Travel Money" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/travel-money-calculator" onReset={() => reset(() => {})} />
+        <ResultCard toolName="Travel Money" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/travel-money-calculator" onReset={() => reset(() => { setTripDays(""); setDailyBudget(""); setBuffer(""); setTravelers(""); })} />
       ) : (
         <p className="calc-empty">Enter your daily budget, trip length and travellers to see how much money to plan for.</p>
       )}

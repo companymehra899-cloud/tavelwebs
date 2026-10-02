@@ -77,7 +77,7 @@ export function MultiCurrencyConverter() {
               <Icon name="calculator" size={15} />
               {t("calculator.calculate")}
             </Button>
-            <Button variant="ghost" onClick={() => reset(() => { setAmount("1000"); setBase(currency); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setAmount(""); })}>
               {t("calculator.reset")}
             </Button>
           </div>

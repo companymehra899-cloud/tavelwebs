@@ -163,7 +163,7 @@ export function CurrencyConverter() {
               <Icon name="calculator" size={15} />
               {t("calculator.calculate")}
             </Button>
-            <Button variant="ghost" onClick={() => reset(() => { setAmount("100"); setFrom(currency); setTo("GBP"); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setAmount(""); })}>
               {t("calculator.reset")}
             </Button>
           </div>
@@ -184,7 +184,7 @@ export function CurrencyConverter() {
           rows={rows}
           summary={summary}
           sharePath={`/tools/currency-converter?amount=${amount}&from=${from}&to=${to}`}
-          onReset={() => reset(() => { setAmount("100"); })}
+          onReset={() => reset(() => { setAmount(""); })}
           icon="coins"
         />
       ) : (

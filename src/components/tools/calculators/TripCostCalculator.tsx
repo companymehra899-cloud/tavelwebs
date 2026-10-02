@@ -84,12 +84,12 @@ export function TripCostCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setTransport("400"); setAccommodation("600"); setFood("300"); setActivities("150"); setOther("100"); setTravelers("2"); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setTransport(""); setAccommodation(""); setFood(""); setActivities(""); setOther(""); setTravelers(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/trip-cost-calculator?travelers=${travelers}`} onReset={() => reset(() => { setTransport("400"); setAccommodation("600"); setFood("300"); setActivities("150"); setOther("100"); })} />
+        <ResultCard toolName="Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/trip-cost-calculator?travelers=${travelers}`} onReset={() => reset(() => { setTransport(""); setAccommodation(""); setFood(""); setActivities(""); setOther(""); setTravelers(""); })} />
       ) : (
         <p className="calc-empty">Enter your transport, accommodation, food and activity costs to see the trip total.</p>
       )}

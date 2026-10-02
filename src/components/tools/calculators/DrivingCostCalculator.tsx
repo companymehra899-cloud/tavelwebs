@@ -78,14 +78,14 @@ export function DrivingCostCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setDistance("250"); setConsumption("6.5"); setFuelPrice("1.75"); setWearPerKm("0.05"); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setDistance(""); setConsumption(""); setFuelPrice(""); setWearPerKm(""); })}>
               {t("calculator.reset")}
             </Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Driving Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/driving-cost-calculator?distance=${distance}&fuelPrice=${fuelPrice}`} onReset={() => reset(() => { setDistance("250"); setConsumption("6.5"); setFuelPrice("1.75"); setWearPerKm("0.05"); })} />
+        <ResultCard toolName="Driving Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/driving-cost-calculator?distance=${distance}&fuelPrice=${fuelPrice}`} onReset={() => reset(() => { setDistance(""); setConsumption(""); setFuelPrice(""); setWearPerKm(""); })} />
       ) : (
         <p className="calc-empty">Enter distance, fuel consumption and fuel price to estimate your driving cost.</p>
       )}

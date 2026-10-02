@@ -17,12 +17,12 @@ const HERO_CHIPS = [
 ];
 
 const POPULAR_ACCENTS = [
-  "border-teal-200 bg-teal-50 text-teal-700",
-  "border-amber-200 bg-amber-50 text-amber-700",
-  "border-cyan-200 bg-cyan-50 text-cyan-700",
-  "border-emerald-200 bg-emerald-50 text-emerald-700",
-  "border-orange-200 bg-orange-50 text-orange-700",
-  "border-lime-200 bg-lime-50 text-lime-800",
+  { icon: "bg-[#e8f0fa] text-[#0c3c78]", bar: "from-[#0c3c78] to-[#0c6ebd]", glow: "group-hover:shadow-[0_16px_32px_rgba(12,60,120,0.16)]" },
+  { icon: "bg-[#fff4e0] text-[#c47a00]", bar: "from-[#f5a623] to-[#f7c14a]", glow: "group-hover:shadow-[0_16px_32px_rgba(245,166,35,0.18)]" },
+  { icon: "bg-[#e3f1fb] text-[#0c6ebd]", bar: "from-[#0c6ebd] to-[#1a8fd4]", glow: "group-hover:shadow-[0_16px_32px_rgba(12,110,189,0.16)]" },
+  { icon: "bg-[#e8f7ef] text-[#1a7a4c]", bar: "from-[#1a7a4c] to-[#34a06a]", glow: "group-hover:shadow-[0_16px_32px_rgba(26,122,76,0.16)]" },
+  { icon: "bg-[#fdecea] text-[#c2410c]", bar: "from-[#c2410c] to-[#ea580c]", glow: "group-hover:shadow-[0_16px_32px_rgba(194,65,12,0.16)]" },
+  { icon: "bg-[#eee8fa] text-[#5b4aa8]", bar: "from-[#5b4aa8] to-[#7c6bc4]", glow: "group-hover:shadow-[0_16px_32px_rgba(91,74,168,0.16)]" },
 ];
 
 export function HomeHero() {
@@ -87,18 +87,23 @@ function PopularCard({ tool, index }: { tool: ToolMeta; index: number }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="hover-lift group flex h-full items-start gap-4 rounded border border-border bg-surface p-4 shadow-[var(--shadow-sm)]"
+      className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white p-5 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-1 hover:border-accent/30 ${accent.glow}`}
     >
-      <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${accent}`}>
-        <Icon name={resolveIcon(tool.icon)} size={20} />
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-1.5 text-sm font-semibold text-ink group-hover:text-accent-strong">
-          {tool.shortTitle}
+      <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent.bar}`} />
+      <span className="flex items-start justify-between gap-3">
+        <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${accent.icon}`}>
+          <Icon name={resolveIcon(tool.icon)} size={22} />
         </span>
-        <span className="mt-1 block line-clamp-2 text-xs leading-5 text-muted">{tool.description}</span>
+        <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-muted">
+          {tool.categoryLabel}
+        </span>
       </span>
-      <Icon name="arrow-right" size={16} className="mt-1 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent" />
+      <span className="mt-4 text-base font-bold tracking-tight text-ink group-hover:text-accent-strong">{tool.shortTitle}</span>
+      <span className="mt-1.5 line-clamp-2 flex-1 text-sm leading-6 text-muted">{tool.description}</span>
+      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+        Open tool
+        <Icon name="arrow-right" size={15} className="transition group-hover:translate-x-1" />
+      </span>
     </Link>
   );
 }
@@ -176,11 +181,31 @@ const SECTIONS: {
   },
 ];
 
-const ACCENT_CLASSES: Record<string, { icon: string; wash: string; text: string }> = {
-  sky: { icon: "bg-teal-50 text-teal-600 border-teal-200", wash: "from-teal-100/70", text: "text-teal-700" },
-  indigo: { icon: "bg-indigo-50 text-indigo-600 border-indigo-200", wash: "from-indigo-100/70", text: "text-indigo-700" },
-  cyan: { icon: "bg-cyan-50 text-cyan-600 border-cyan-200", wash: "from-cyan-100/70", text: "text-cyan-700" },
-  emerald: { icon: "bg-emerald-50 text-emerald-600 border-emerald-200", wash: "from-emerald-100/70", text: "text-emerald-700" },
+const ACCENT_CLASSES: Record<string, { icon: string; bar: string; text: string; glow: string }> = {
+  sky: {
+    icon: "bg-[#e8f0fa] text-[#0c3c78]",
+    bar: "from-[#0c3c78] to-[#0c6ebd]",
+    text: "text-[#0c3c78]",
+    glow: "group-hover:shadow-[0_16px_32px_rgba(12,60,120,0.16)]",
+  },
+  emerald: {
+    icon: "bg-[#e8f7ef] text-[#1a7a4c]",
+    bar: "from-[#1a7a4c] to-[#34a06a]",
+    text: "text-[#1a7a4c]",
+    glow: "group-hover:shadow-[0_16px_32px_rgba(26,122,76,0.16)]",
+  },
+  indigo: {
+    icon: "bg-[#eee8fa] text-[#5b4aa8]",
+    bar: "from-[#5b4aa8] to-[#7c6bc4]",
+    text: "text-[#5b4aa8]",
+    glow: "group-hover:shadow-[0_16px_32px_rgba(91,74,168,0.16)]",
+  },
+  cyan: {
+    icon: "bg-[#e3f1fb] text-[#0c6ebd]",
+    bar: "from-[#0c6ebd] to-[#1a8fd4]",
+    text: "text-[#0c6ebd]",
+    glow: "group-hover:shadow-[0_16px_32px_rgba(12,110,189,0.16)]",
+  },
 };
 
 function FeaturedToolCard({ tool, accent }: { tool: ToolMeta; accent: string }) {
@@ -189,37 +214,38 @@ function FeaturedToolCard({ tool, accent }: { tool: ToolMeta; accent: string }) 
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="hover-lift group relative flex h-full flex-col overflow-hidden rounded border border-border bg-surface p-5 shadow-[var(--shadow-sm)]"
+      className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white p-6 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-1 hover:border-accent/30 ${colors.glow}`}
     >
-      <div className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${colors.wash} to-transparent blur-2xl`} />
-      <span className={`relative flex h-12 w-12 items-center justify-center rounded-2xl border ${colors.icon}`}>
-        <Icon name={resolveIcon(tool.icon)} size={24} />
+      <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${colors.bar}`} />
+      <span className={`relative mt-1 flex h-14 w-14 items-center justify-center rounded-xl ${colors.icon}`}>
+        <Icon name={resolveIcon(tool.icon)} size={26} />
       </span>
-      <p className={`relative mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] ${colors.text}`}>{tool.categoryLabel}</p>
-      <h3 className="relative mt-2 text-xl font-bold tracking-tight text-ink">{tool.title}</h3>
+      <p className={`relative mt-5 text-[0.68rem] font-bold uppercase tracking-[0.16em] ${colors.text}`}>{tool.categoryLabel}</p>
+      <h3 className="relative mt-2 text-xl font-bold tracking-tight text-ink group-hover:text-accent-strong">{tool.title}</h3>
       <p className="relative mt-3 flex-1 text-sm leading-6 text-muted">{tool.description}</p>
-      <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:text-accent-strong">
+      <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
         {t("tools.openTool")}
-        <Icon name="arrow-right" size={16} className="transition group-hover:translate-x-0.5" />
+        <Icon name="arrow-right" size={16} className="transition group-hover:translate-x-1" />
       </span>
     </Link>
   );
 }
 
-function SideToolCard({ tool }: { tool: ToolMeta }) {
+function SideToolCard({ tool, accent }: { tool: ToolMeta; accent: string }) {
+  const colors = ACCENT_CLASSES[accent] ?? ACCENT_CLASSES.sky;
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="hover-lift group flex items-center gap-3.5 rounded border border-border bg-surface p-4 shadow-[var(--shadow-sm)]"
+      className={`group flex items-center gap-3.5 overflow-hidden rounded-xl border border-border bg-white p-4 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-0.5 hover:border-accent/30 ${colors.glow}`}
     >
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
-        <Icon name={resolveIcon(tool.icon)} size={18} />
+      <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${colors.icon}`}>
+        <Icon name={resolveIcon(tool.icon)} size={20} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-sm font-semibold text-ink">{tool.shortTitle}</span>
-        <span className="block truncate text-xs text-muted">{tool.categoryLabel}</span>
+        <span className="block text-sm font-bold text-ink group-hover:text-accent-strong">{tool.shortTitle}</span>
+        <span className="mt-0.5 block truncate text-xs text-muted">{tool.categoryLabel}</span>
       </span>
-      <Icon name="arrow-right" size={15} className="shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent" />
+      <Icon name="arrow-right" size={15} className="shrink-0 text-muted transition group-hover:translate-x-1 group-hover:text-accent" />
     </Link>
   );
 }
@@ -252,7 +278,7 @@ export function CategoryShowcase() {
               </div>
               <div className="grid gap-3 sm:grid-cols-2 lg:col-span-3 lg:content-start">
                 {sides.map((tool) => (
-                  <SideToolCard key={tool.slug} tool={tool} />
+                  <SideToolCard key={tool.slug} tool={tool} accent={section.accent} />
                 ))}
               </div>
             </div>

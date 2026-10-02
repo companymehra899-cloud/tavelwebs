@@ -104,12 +104,12 @@ export function TravelBudgetCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setTravelers("2"); setDays("7"); applyPreset("mid-range"); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setTravelers(""); setDays(""); setAccommodation(""); setFood(""); setTransport(""); setActivities(""); setOther(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Travel Budget" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/travel-budget-calculator?days=${days}&travelers=${travelers}`} onReset={() => reset(() => { setTravelers("2"); setDays("7"); applyPreset("mid-range"); })} />
+        <ResultCard toolName="Travel Budget" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/travel-budget-calculator?days=${days}&travelers=${travelers}`} onReset={() => reset(() => { setTravelers(""); setDays(""); setAccommodation(""); setFood(""); setTransport(""); setActivities(""); setOther(""); })} />
       ) : (
         <p className="calc-empty">Enter your nightly and daily costs to build a full trip budget with per-person and per-day figures.</p>
       )}

@@ -68,12 +68,12 @@ export function LayoverCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setArrivalDate(today); setArrivalTime("08:30"); setDepartureDate(today); setDepartureTime("12:15"); setArrivalZone(""); setDepartureZone(""); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setArrivalDate(""); setArrivalTime(""); setDepartureDate(""); setDepartureTime(""); setArrivalZone(""); setDepartureZone(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Layover" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/layover-calculator" onReset={() => reset(() => {})} />
+        <ResultCard toolName="Layover" title={t("calculator.result")} rows={rows} summary={summary} sharePath="/tools/layover-calculator" onReset={() => reset(() => { setArrivalDate(""); setArrivalTime(""); setDepartureDate(""); setDepartureTime(""); setArrivalZone(""); setDepartureZone(""); })} />
       ) : (
         <p className="calc-empty">Enter your arrival and departure times to calculate the layover length.</p>
       )}

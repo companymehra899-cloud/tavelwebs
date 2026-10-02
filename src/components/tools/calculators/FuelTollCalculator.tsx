@@ -149,14 +149,14 @@ export function FuelTollCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setStart(""); setDestination(""); setDistance("400"); setConsumption("6"); setFuelPrice("1.75"); setToll("30"); setTravelers("2"); setNote(null); setRouteMap(null); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setStart(""); setDestination(""); setDistance(""); setConsumption(""); setFuelPrice(""); setToll(""); setTravelers(""); setNote(null); setRouteMap(null); })}>
               {t("calculator.reset")}
             </Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Fuel + Toll" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/fuel-toll-calculator?distance=${distance}&fuelPrice=${fuelPrice}&toll=${toll}`} onReset={() => reset(() => { setDistance("400"); setConsumption("6"); setFuelPrice("1.75"); setToll("30"); })} />
+        <ResultCard toolName="Fuel + Toll" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/fuel-toll-calculator?distance=${distance}&fuelPrice=${fuelPrice}&toll=${toll}`} onReset={() => reset(() => { setStart(""); setDestination(""); setDistance(""); setConsumption(""); setFuelPrice(""); setToll(""); setTravelers(""); setNote(null); setRouteMap(null); })} />
       ) : (
         <p className="calc-empty">Enter your distance, fuel use and tolls to estimate the total cost.</p>
       )}

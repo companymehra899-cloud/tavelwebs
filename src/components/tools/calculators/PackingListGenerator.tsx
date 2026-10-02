@@ -88,7 +88,9 @@ export function PackingListGenerator() {
   }
 
   function resetAll() {
-    persist({ destination: saved.destination, packed: [], removed: [], custom: [] });
+    persist({ destination: "", packed: [], removed: [], custom: [] });
+    setDays("");
+    setCustomLabel("");
     setGenerated(false);
   }
 

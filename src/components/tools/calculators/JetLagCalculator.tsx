@@ -76,13 +76,13 @@ export function JetLagCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setFrom("Europe/London"); setTo("America/New_York"); setDirection("auto"); setTripDays("7"); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setDepartureDate(""); setDepartureTime(""); setArrivalDate(""); setArrivalTime(""); setTripDays(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
         <>
-          <ResultCard toolName="Jet Lag" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/jet-lag-calculator?from=${from}&to=${to}`} onReset={() => reset(() => {})} />
+          <ResultCard toolName="Jet Lag" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/jet-lag-calculator?from=${from}&to=${to}`} onReset={() => reset(() => { setDepartureDate(""); setDepartureTime(""); setArrivalDate(""); setArrivalTime(""); setTripDays(""); })} />
           <section aria-labelledby="jl-plan" className="rounded-2xl border border-border bg-white p-5">
             <h2 id="jl-plan" className="text-lg font-semibold">Suggested adjustment schedule</h2>
             <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm text-muted">

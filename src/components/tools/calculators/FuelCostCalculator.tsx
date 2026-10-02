@@ -82,14 +82,14 @@ export function FuelCostCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setDistance("100"); setConsumption("5"); setFuelPrice("1.75"); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setDistance(""); setConsumption(""); setFuelPrice(""); })}>
               {t("calculator.reset")}
             </Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Fuel Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={sharePath} onReset={() => reset(() => { setDistance("100"); setConsumption("5"); setFuelPrice("1.75"); })} />
+        <ResultCard toolName="Fuel Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={sharePath} onReset={() => reset(() => { setDistance(""); setConsumption(""); setFuelPrice(""); })} />
       ) : (
         <p className="calc-empty">Enter distance, fuel consumption and fuel price to calculate the fuel cost.</p>
       )}

@@ -102,12 +102,12 @@ export function CurrencyExchangeCalculator() {
           ) : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate} disabled={loading || !rates}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setAmount("1000"); setOfferedRate("0.83"); setFee("5"); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setAmount(""); setOfferedRate(""); setFee(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Currency Exchange" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/currency-exchange-calculator?amount=${amount}&from=${from}&to=${to}`} onReset={() => reset(() => { setAmount("1000"); })} />
+        <ResultCard toolName="Currency Exchange" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/currency-exchange-calculator?amount=${amount}&from=${from}&to=${to}`} onReset={() => reset(() => { setAmount(""); setOfferedRate(""); setFee(""); })} />
       ) : (
         <p className="calc-empty">Enter an amount, the offered rate and any fee to see the real cost of exchanging money.</p>
       )}

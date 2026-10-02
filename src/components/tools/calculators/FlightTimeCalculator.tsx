@@ -89,12 +89,12 @@ export function FlightTimeCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setOriginCode("LHR"); setDestinationCode("JFK"); setSpeed("850"); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setOriginCode(""); setDestinationCode(""); setOriginLat(""); setOriginLon(""); setDestinationLat(""); setDestinationLon(""); setSpeed(""); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Flight Time" title={`${t("calculator.result")} (${t("calculator.estimate")})`} rows={rows} summary={summary} sharePath={`/tools/flight-time-calculator?from=${originCode}&to=${destinationCode}`} onReset={() => reset(() => {})} />
+        <ResultCard toolName="Flight Time" title={`${t("calculator.result")} (${t("calculator.estimate")})`} rows={rows} summary={summary} sharePath={`/tools/flight-time-calculator?from=${originCode}&to=${destinationCode}`} onReset={() => reset(() => { setOriginCode(""); setDestinationCode(""); setOriginLat(""); setOriginLon(""); setDestinationLat(""); setDestinationLon(""); setSpeed(""); })} />
       ) : (
         <p className="calc-empty">Enter an origin and destination to estimate the flight distance and duration.</p>
       )}

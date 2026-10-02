@@ -92,14 +92,14 @@ export function EvChargingCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setDistance("200"); setConsumption("17"); setPrice("0.35"); setStartBattery("20"); setTargetBattery("80"); setCapacity("60"); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setDistance(""); setConsumption(""); setPrice(""); setStartBattery(""); setTargetBattery(""); setCapacity(""); })}>
               {t("calculator.reset")}
             </Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="EV Charging Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/ev-charging-cost-calculator?distance=${distance}&price=${price}`} onReset={() => reset(() => { setDistance("200"); setConsumption("17"); setPrice("0.35"); })} />
+        <ResultCard toolName="EV Charging Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/ev-charging-cost-calculator?distance=${distance}&price=${price}`} onReset={() => reset(() => { setDistance(""); setConsumption(""); setPrice(""); setStartBattery(""); setTargetBattery(""); setCapacity(""); })} />
       ) : (
         <p className="calc-empty">Enter distance, energy consumption and electricity price to estimate your charging cost.</p>
       )}

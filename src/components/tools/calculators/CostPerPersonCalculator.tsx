@@ -81,12 +81,12 @@ export function CostPerPersonCalculator() {
           {error ? <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setTotalCost("1200"); setTravelers("2"); setCustom(false); setShares(["1", "1"]); })}>{t("calculator.reset")}</Button>
+            <Button variant="ghost" onClick={() => reset(() => { setTotalCost(""); setTravelers(""); setCustom(false); setShares(["1", "1"]); })}>{t("calculator.reset")}</Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Cost Per Person" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/cost-per-person-calculator?total=${totalCost}&travelers=${travelers}`} onReset={() => reset(() => { setTotalCost("1200"); setTravelers("2"); setCustom(false); setShares(["1", "1"]); })} />
+        <ResultCard toolName="Cost Per Person" title={t("calculator.result")} rows={rows} summary={summary} sharePath={`/tools/cost-per-person-calculator?total=${totalCost}&travelers=${travelers}`} onReset={() => reset(() => { setTotalCost(""); setTravelers(""); setCustom(false); setShares(["1", "1"]); })} />
       ) : (
         <p className="calc-empty">Enter the trip total and number of travellers to see what each person pays.</p>
       )}

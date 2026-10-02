@@ -101,9 +101,9 @@ export function TripCountdown() {
             <Button
               variant="ghost"
               onClick={() => {
-                setName("My trip");
+                setName("");
                 setDate("");
-                setTime("08:00");
+                setTime("");
                 setRemaining(null);
                 writeJson(STORAGE_KEYS.countdown, null);
               }}

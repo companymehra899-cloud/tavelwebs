@@ -214,14 +214,14 @@ export function RoadTripCalculator() {
           ) : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={calculate}>{t("calculator.calculate")}</Button>
-            <Button variant="ghost" onClick={() => reset(() => { setOrigin(""); setDestination(""); setDistance("500"); setConsumption("6.5"); setFuelPrice("1.75"); setTravelers("2"); setTolls("0"); setParking("0"); setAccommodation("0"); setOther("0"); setDistanceNote(null); setRouteMap(null); })}>
+            <Button variant="ghost" onClick={() => reset(() => { setOrigin(""); setDestination(""); setDistance(""); setConsumption(""); setFuelPrice(""); setTravelers(""); setTolls(""); setParking(""); setAccommodation(""); setOther(""); setDistanceNote(null); setRouteMap(null); })}>
               {t("calculator.reset")}
             </Button>
           </div>
         </div>
       </CalculatorCard>
       {result ? (
-        <ResultCard toolName="Road Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={sharePath} onReset={() => reset(() => { setDistance("500"); setConsumption("6.5"); setFuelPrice("1.75"); setTravelers("2"); setTolls("0"); setParking("0"); setAccommodation("0"); setOther("0"); })} />
+        <ResultCard toolName="Road Trip Cost" title={t("calculator.result")} rows={rows} summary={summary} sharePath={sharePath} onReset={() => reset(() => { setOrigin(""); setDestination(""); setDistance(""); setConsumption(""); setFuelPrice(""); setTravelers(""); setTolls(""); setParking(""); setAccommodation(""); setOther(""); setDistanceNote(null); setRouteMap(null); })} />
       ) : (
         <p className="calc-empty">Enter your route details to estimate fuel, tolls and the total road trip cost.</p>
       )}
