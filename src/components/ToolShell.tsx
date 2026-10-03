@@ -9,6 +9,7 @@ import { Icon, resolveIcon } from "@/components/ui/Icon";
 import type { ToolMeta } from "@/lib/catalog";
 import { CATEGORY_PATHS } from "@/lib/constants";
 import { breadcrumbJsonLd, faqJsonLd, JsonLd, toolJsonLd } from "@/lib/seo";
+import { toolImage } from "@/lib/images";
 import type { ReactNode } from "react";
 
 export function ToolShell({ tool, children }: { tool: ToolMeta; children: ReactNode }) {
@@ -25,6 +26,11 @@ export function ToolShell({ tool, children }: { tool: ToolMeta; children: ReactN
       <JsonLd data={faqJsonLd(tool.faqs)} />
       <RecordRecent slug={tool.slug} />
       <Breadcrumb items={breadcrumbs} />
+
+      <div className="relative mt-5 overflow-hidden rounded-xl">
+        <img src={toolImage(tool.slug, tool.category)} alt="" className="h-44 w-full object-cover sm:h-56" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+      </div>
 
       <header className="mt-5 flex flex-wrap items-start justify-between gap-5">
         <div className="flex items-start gap-4">

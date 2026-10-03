@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { CATEGORIES, TOOLS } from "@/lib/catalog";
 import { ToolCard } from "@/components/tools/ToolCard";
+import { categoryImage } from "@/lib/images";
 
 export const dynamicParams = false;
 
@@ -54,9 +55,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         <span aria-hidden="true"> / </span>
         <span className="font-semibold text-ink">{heading}</span>
       </nav>
-      <p className="eyebrow mt-5 text-accent">Category</p>
-      <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{heading}</h1>
-      <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">{meta?.description}</p>
+      <div className="relative mt-5 overflow-hidden rounded-xl">
+        <img src={categoryImage(meta?.id ?? slug)} alt="" className="h-40 w-full object-cover sm:h-52" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 text-white">
+          <p className="eyebrow text-white/80">Category</p>
+          <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h1>
+        </div>
+      </div>
+      <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">{meta?.description}</p>
       <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (
           <li key={tool.slug} className="h-full">

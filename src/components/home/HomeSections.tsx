@@ -7,6 +7,7 @@ import { Icon, resolveIcon } from "@/components/ui/Icon";
 import { CATEGORY_PATHS } from "@/lib/constants";
 import { TOOL_MAP, type ToolMeta } from "@/lib/catalog";
 import { HOME_FAQS } from "@/lib/faq";
+import { HERO_IMAGE, toolImage } from "@/lib/images";
 
 const HERO_CHIPS = [
   "fuel-cost-calculator",
@@ -30,8 +31,14 @@ export function HomeHero() {
   const { openSearch } = useSearch();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#0c3c78_0%,#0a5a9c_55%,#eef2f6_100%)]">
-      <div className="page-shell py-10 sm:py-14">
+    <section className="relative overflow-hidden bg-brand">
+      <img
+        src={HERO_IMAGE}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,41,82,0.72)_0%,rgba(12,60,120,0.78)_55%,rgba(238,242,246,0.96)_100%)]" />
+      <div className="page-shell relative py-10 sm:py-14">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">{t("home.heroBadge")}</p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
@@ -87,22 +94,25 @@ function PopularCard({ tool, index }: { tool: ToolMeta; index: number }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white p-5 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-1 hover:border-accent/30 ${accent.glow}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-1 hover:border-accent/30 ${accent.glow}`}
     >
-      <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent.bar}`} />
-      <span className="flex items-start justify-between gap-3">
-        <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${accent.icon}`}>
-          <Icon name={resolveIcon(tool.icon)} size={22} />
-        </span>
-        <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-muted">
-          {tool.categoryLabel}
+      <span className="relative h-36 overflow-hidden">
+        <img src={toolImage(tool.slug, tool.category)} alt="" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+        <span className={`absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r ${accent.bar}`} />
+        <span className={`absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white/90 ${accent.icon.split(" ").filter((c) => c.startsWith("text-")).join(" ")}`}>
+          <Icon name={resolveIcon(tool.icon)} size={18} />
         </span>
       </span>
-      <span className="mt-4 text-base font-bold tracking-tight text-ink group-hover:text-accent-strong">{tool.shortTitle}</span>
-      <span className="mt-1.5 line-clamp-2 flex-1 text-sm leading-6 text-muted">{tool.description}</span>
-      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-        Open tool
-        <Icon name="arrow-right" size={15} className="transition group-hover:translate-x-1" />
+      <span className="flex flex-1 flex-col p-4">
+        <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-muted self-start">
+          {tool.categoryLabel}
+        </span>
+        <span className="mt-2 text-base font-bold tracking-tight text-ink group-hover:text-accent-strong">{tool.shortTitle}</span>
+        <span className="mt-1.5 line-clamp-2 flex-1 text-sm leading-6 text-muted">{tool.description}</span>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+          Open tool
+          <Icon name="arrow-right" size={15} className="transition group-hover:translate-x-1" />
+        </span>
       </span>
     </Link>
   );
@@ -214,18 +224,23 @@ function FeaturedToolCard({ tool, accent }: { tool: ToolMeta; accent: string }) 
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white p-6 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-1 hover:border-accent/30 ${colors.glow}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-1 hover:border-accent/30 ${colors.glow}`}
     >
-      <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${colors.bar}`} />
-      <span className={`relative mt-1 flex h-14 w-14 items-center justify-center rounded-xl ${colors.icon}`}>
-        <Icon name={resolveIcon(tool.icon)} size={26} />
+      <span className="relative h-44 overflow-hidden">
+        <img src={toolImage(tool.slug, tool.category)} alt="" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+        <span className={`absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r ${colors.bar}`} />
+        <span className={`absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/92 ${colors.icon.split(" ").filter((c) => c.startsWith("text-")).join(" ")}`}>
+          <Icon name={resolveIcon(tool.icon)} size={22} />
+        </span>
       </span>
-      <p className={`relative mt-5 text-[0.68rem] font-bold uppercase tracking-[0.16em] ${colors.text}`}>{tool.categoryLabel}</p>
-      <h3 className="relative mt-2 text-xl font-bold tracking-tight text-ink group-hover:text-accent-strong">{tool.title}</h3>
-      <p className="relative mt-3 flex-1 text-sm leading-6 text-muted">{tool.description}</p>
-      <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-        {t("tools.openTool")}
-        <Icon name="arrow-right" size={16} className="transition group-hover:translate-x-1" />
+      <span className="flex flex-1 flex-col p-5">
+        <p className={`text-[0.68rem] font-bold uppercase tracking-[0.16em] ${colors.text}`}>{tool.categoryLabel}</p>
+        <h3 className="mt-2 text-xl font-bold tracking-tight text-ink group-hover:text-accent-strong">{tool.title}</h3>
+        <p className="mt-3 flex-1 text-sm leading-6 text-muted">{tool.description}</p>
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+          {t("tools.openTool")}
+          <Icon name="arrow-right" size={16} className="transition group-hover:translate-x-1" />
+        </span>
       </span>
     </Link>
   );
@@ -236,10 +251,10 @@ function SideToolCard({ tool, accent }: { tool: ToolMeta; accent: string }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className={`group flex items-center gap-3.5 overflow-hidden rounded-xl border border-border bg-white p-4 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-0.5 hover:border-accent/30 ${colors.glow}`}
+      className={`group flex items-center gap-3.5 overflow-hidden rounded-xl border border-border bg-white p-3 shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-0.5 hover:border-accent/30 ${colors.glow}`}
     >
-      <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${colors.icon}`}>
-        <Icon name={resolveIcon(tool.icon)} size={20} />
+      <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg">
+        <img src={toolImage(tool.slug, tool.category)} alt="" className="h-full w-full object-cover" />
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-sm font-bold text-ink group-hover:text-accent-strong">{tool.shortTitle}</span>
